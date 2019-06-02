@@ -252,7 +252,6 @@ public class SponsorshipSponsorController extends AbstractController {
 
 		if (sponsorship2.getGame() != null)
 			sponsorshipId = this.sponsorshipService.findSponsorshipByGameAndSponsorId(sponsorship2.getGame().getId(), this.sponsorService.findByPrincipal().getId());
-
 		if (sponsorship2.getPlayer() != null)
 			sponsorshipId1 = this.sponsorshipService.findSponsorshipByPlayerAndSponsorId(sponsorship2.getPlayer().getId(), this.sponsorService.findByPrincipal().getId());
 

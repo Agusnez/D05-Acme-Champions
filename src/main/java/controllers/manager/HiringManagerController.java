@@ -90,29 +90,36 @@ public class HiringManagerController extends AbstractController {
 
 			if (loged.getTeam() == null) {
 
-				if (hiring.getManager().equals(loged) && loged.getTeam() == null && hiring.getStatus().equals("PENDING")) {
+				if (hiring.getManager().equals(loged) && loged.getTeam() == null && hiring.getStatus().equals("PENDING"))
+					try {
 
-					final Manager manager = this.managerService.findOne(hiring.getManager().getId());
+						final Manager manager = this.managerService.findOne(hiring.getManager().getId());
 
-					manager.setTeam(this.teamService.findByPresidentId(hiring.getPresident().getId()));
+						manager.setTeam(this.teamService.findByPresidentId(hiring.getPresident().getId()));
 
-					final Collection<Hiring> oldOnes = this.hiringService.findAllByManager(manager.getId());
+						final Collection<Hiring> oldOnes = this.hiringService.findAllByManager(manager.getId());
 
-					for (final Hiring oldOne : oldOnes)
-						this.hiringService.delete(oldOne);
+						for (final Hiring oldOne : oldOnes)
+							this.hiringService.delete(oldOne);
 
-					this.managerService.save(manager);
+						this.managerService.save(manager);
 
-					this.teamService.functional(this.teamService.findByPresidentId(hiring.getPresident().getId()));
+						this.teamService.functional(this.teamService.findByPresidentId(hiring.getPresident().getId()));
 
-					hiring.setStatus("ACCEPTED");
+						hiring.setStatus("ACCEPTED");
 
-					this.hiringService.save(hiring);
+						this.hiringService.save(hiring);
 
-					result = new ModelAndView("redirect:/hiring/manager/list.do");
-					result.addObject("banner", banner);
+						result = new ModelAndView("redirect:/hiring/manager/list.do");
+						result.addObject("banner", banner);
 
-				} else
+					} catch (final Exception e) {
+
+						result = new ModelAndView("misc/error");
+						result.addObject("banner", banner);
+
+					}
+				else
 					result = new ModelAndView("redirect:/welcome/index.do");
 
 			} else

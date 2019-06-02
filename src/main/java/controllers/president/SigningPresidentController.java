@@ -199,21 +199,30 @@ public class SigningPresidentController extends AbstractController {
 
 				final Player player = this.playerService.findOne(signing.getPlayer().getId());
 
-				this.playerService.editTeam(player, this.teamService.findByPresidentId(signing.getPresident().getId()), signing.getOfferedClause());
+				try {
 
-				final Collection<Signing> oldOnes = this.signingService.findAllByPlayer(player.getId());
+					this.playerService.editTeam(player, this.teamService.findByPresidentId(signing.getPresident().getId()), signing.getOfferedClause());
 
-				for (final Signing oldOne : oldOnes)
-					this.signingService.delete(oldOne);
+					final Collection<Signing> oldOnes = this.signingService.findAllByPlayer(player.getId());
 
-				this.teamService.functional(this.teamService.findByPresidentId(signing.getPresident().getId()));
+					for (final Signing oldOne : oldOnes)
+						this.signingService.delete(oldOne);
 
-				signing.setStatus("ACCEPTED");
+					this.teamService.functional(this.teamService.findByPresidentId(signing.getPresident().getId()));
 
-				this.signingService.save(signing);
+					signing.setStatus("ACCEPTED");
 
-				result = new ModelAndView("redirect:/signing/president/list.do");
-				result.addObject("banner", banner);
+					this.signingService.save(signing);
+
+					result = new ModelAndView("redirect:/signing/president/list.do");
+					result.addObject("banner", banner);
+
+				} catch (final Exception e) {
+
+					result = new ModelAndView("misc/error");
+					result.addObject("banner", banner);
+
+				}
 
 			} else {
 

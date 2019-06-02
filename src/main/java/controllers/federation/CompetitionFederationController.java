@@ -158,23 +158,37 @@ public class CompetitionFederationController {
 				if (competition.getStartDate().after(now)) {
 
 					if (competition.getFormat().getType().equals("LEAGUE") && competition.getTeams().size() >= 2 && competition.getTeams().size() >= competition.getFormat().getMinimumTeams()
-						&& competition.getTeams().size() <= competition.getFormat().getMaximumTeams()) {
+						&& competition.getTeams().size() <= competition.getFormat().getMaximumTeams())
+						try {
 
-						competition.setClosed(true);
+							competition.setClosed(true);
 
-						this.competitionService.save(competition);
+							this.competitionService.save(competition);
 
-						result = new ModelAndView("redirect:/competition/federation/list.do");
+							result = new ModelAndView("redirect:/competition/federation/list.do");
 
-					} else if ((Math.log(competition.getTeams().size()) / Math.log(2)) % 1 == 0 && competition.getTeams().size() >= competition.getFormat().getMinimumTeams() && competition.getTeams().size() <= competition.getFormat().getMaximumTeams()) {
+						} catch (final Exception e) {
 
-						competition.setClosed(true);
+							result = new ModelAndView("misc/error");
+							result.addObject("banner", banner);
 
-						this.competitionService.save(competition);
+						}
+					else if ((Math.log(competition.getTeams().size()) / Math.log(2)) % 1 == 0 && competition.getTeams().size() >= competition.getFormat().getMinimumTeams() && competition.getTeams().size() <= competition.getFormat().getMaximumTeams())
+						try {
 
-						result = new ModelAndView("redirect:/competition/federation/list.do");
+							competition.setClosed(true);
 
-					} else {
+							this.competitionService.save(competition);
+
+							result = new ModelAndView("redirect:/competition/federation/list.do");
+
+						} catch (final Exception e) {
+
+							result = new ModelAndView("misc/error");
+							result.addObject("banner", banner);
+
+						}
+					else {
 
 						final Collection<Competition> competitions;
 						final Federation federation;
@@ -269,16 +283,23 @@ public class CompetitionFederationController {
 
 				final Team team = this.teamService.findOne(teamId);
 
-				if (team.getFunctional()) {
+				final Competition competition = this.competitionService.findOne(competitionId);
 
-					final Competition competition = this.competitionService.findOne(competitionId);
+				if (team.getFunctional() && !competition.getTeams().contains(team))
+					try {
 
-					this.competitionService.addTeam(competition, team);
+						this.competitionService.addTeam(competition, team);
 
-					result = new ModelAndView("redirect:/competition/federation/listAddTeam.do");
-					result.addObject("competitionId", competitionId);
+						result = new ModelAndView("redirect:/competition/federation/listAddTeam.do");
+						result.addObject("competitionId", competitionId);
 
-				} else
+					} catch (final Exception e) {
+
+						result = new ModelAndView("misc/error");
+						result.addObject("banner", banner);
+
+					}
+				else
 					result = new ModelAndView("redirect:/welcome/index.do");
 
 			} else

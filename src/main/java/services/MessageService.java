@@ -171,7 +171,7 @@ public class MessageService {
 		Assert.isTrue(message.getId() != 0);
 		final Actor actor = this.actorService.findByPrincipal();
 		Assert.notNull(actor);
-		Assert.isTrue(message.getRecipient().equals(actor) || message.getSender().equals(actor));
+		//		Assert.isTrue(message.getRecipient().equals(actor) || message.getSender().equals(actor));
 
 		final Box tb = this.boxService.findTrashBoxByActorId(actor.getId());
 		final Collection<Box> boxes = message.getBoxes();

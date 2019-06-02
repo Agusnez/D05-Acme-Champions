@@ -19,8 +19,17 @@
 	<acme:textbox code="message.subject" path="subject" obligatory="true"/>
 
 	<acme:textarea code="message.body" path="body" obligatory="true"/>
-	
-	<acme:textbox code="message.priority" path="priority" obligatory="true"/>
+		
+	<form:label path="priority">
+			<spring:message code="message.priority"/>
+		</form:label>
+		<form:select path="priority" >
+			<form:option label="Low" value="LOW"/>
+			<form:option label="Neutral" value="NEUTRAL"/>
+			<form:option label="High" value="HIGH"/>
+		</form:select>
+		<form:errors cssClass="error" path="priority"></form:errors>
+		<br />
 	
 	<acme:textbox code="message.tags" path="tags" />
 	

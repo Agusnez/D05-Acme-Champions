@@ -102,4 +102,4 @@ requestURI="${requestURI }" >
 	
 
 
-	<acme:button name="back" code="actor.back" onclick="javascript: relativeRedir('message/actor/list.do');"/>
+	<acme:button name="back" code="actor.back" onclick="javascript: relativeRedir('box/actor/list.do');"/>

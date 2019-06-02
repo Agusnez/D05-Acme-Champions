@@ -89,32 +89,39 @@ public class SigningPlayerController extends AbstractController {
 
 			if (loged.getTeam() == null) {
 
-				if (signing.getPlayer().equals(loged) && loged.getTeam() == null && signing.getStatus().equals("PENDING")) {
+				if (signing.getPlayer().equals(loged) && loged.getTeam() == null && signing.getStatus().equals("PENDING"))
+					try {
 
-					final Player player = this.playerService.findOne(signing.getPlayer().getId());
+						final Player player = this.playerService.findOne(signing.getPlayer().getId());
 
-					player.setTeam(this.teamService.findByPresidentId(signing.getPresident().getId()));
-					player.setBuyoutClause(signing.getOfferedClause());
+						player.setTeam(this.teamService.findByPresidentId(signing.getPresident().getId()));
+						player.setBuyoutClause(signing.getOfferedClause());
 
-					this.playerService.save(player);
+						this.playerService.save(player);
 
-					this.teamService.functional(this.teamService.findByPresidentId(signing.getPresident().getId()));
+						this.teamService.functional(this.teamService.findByPresidentId(signing.getPresident().getId()));
 
-					final Collection<Signing> oldOnes = this.signingService.findAllByPlayer(player.getId());
+						final Collection<Signing> oldOnes = this.signingService.findAllByPlayer(player.getId());
 
-					for (final Signing oldOne : oldOnes)
-						this.signingService.delete(oldOne);
+						for (final Signing oldOne : oldOnes)
+							this.signingService.delete(oldOne);
 
-					this.teamService.functional(this.teamService.findByPresidentId(signing.getPresident().getId()));
+						this.teamService.functional(this.teamService.findByPresidentId(signing.getPresident().getId()));
 
-					signing.setStatus("ACCEPTED");
+						signing.setStatus("ACCEPTED");
 
-					this.signingService.save(signing);
+						this.signingService.save(signing);
 
-					result = new ModelAndView("redirect:/signing/player/list.do");
-					result.addObject("banner", banner);
+						result = new ModelAndView("redirect:/signing/player/list.do");
+						result.addObject("banner", banner);
 
-				} else
+					} catch (final Exception e) {
+
+						result = new ModelAndView("misc/error");
+						result.addObject("banner", banner);
+
+					}
+				else
 					result = new ModelAndView("redirect:/welcome/index.do");
 
 			} else

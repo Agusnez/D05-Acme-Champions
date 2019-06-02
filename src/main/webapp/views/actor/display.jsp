@@ -78,6 +78,19 @@
 	<jstl:if test="${language == 'en'}">
 		<acme:display code="player.positionEnglish" property="${actor.positionEnglish }" />
 	</jstl:if>
+	
+	<h3><spring:message code="player.statisticalData" /></h3>
+
+	<acme:display code="statisticalData.yellowCards" property="${statisticalData.yellowCards}" />
+
+	<acme:display code="statisticalData.redCards" property="${statisticalData.redCards}" />
+
+	<acme:display code="statisticalData.goals" property="${statisticalData.goals}" />
+
+	<acme:display code="statisticalData.matchsPlayed" property="${statisticalData.matchsPlayed}" />
+
+	<acme:display code="statisticalData.accumulatedYellowCard" property="${statisticalData.accumulatedYellowCard}" /><br>
+	
 </security:authorize> 	
 
 <jstl:if test="${!admin}">

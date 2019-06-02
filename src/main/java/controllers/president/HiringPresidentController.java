@@ -199,21 +199,30 @@ public class HiringPresidentController extends AbstractController {
 
 				final Manager manager = this.managerService.findOne(hiring.getManager().getId());
 
-				this.managerService.editTeam(manager, this.teamService.findByPresidentId(hiring.getPresident().getId()));
+				try {
 
-				final Collection<Hiring> oldOnes = this.hiringService.findAllByManager(manager.getId());
+					this.managerService.editTeam(manager, this.teamService.findByPresidentId(hiring.getPresident().getId()));
 
-				for (final Hiring oldOne : oldOnes)
-					this.hiringService.delete(oldOne);
+					final Collection<Hiring> oldOnes = this.hiringService.findAllByManager(manager.getId());
 
-				this.teamService.functional(this.teamService.findByPresidentId(hiring.getPresident().getId()));
+					for (final Hiring oldOne : oldOnes)
+						this.hiringService.delete(oldOne);
 
-				hiring.setStatus("ACCEPTED");
+					this.teamService.functional(this.teamService.findByPresidentId(hiring.getPresident().getId()));
 
-				this.hiringService.save(hiring);
+					hiring.setStatus("ACCEPTED");
 
-				result = new ModelAndView("redirect:/hiring/president/list.do");
-				result.addObject("banner", banner);
+					this.hiringService.save(hiring);
+
+					result = new ModelAndView("redirect:/hiring/president/list.do");
+					result.addObject("banner", banner);
+
+				} catch (final Exception e) {
+
+					result = new ModelAndView("misc/error");
+					result.addObject("banner", banner);
+
+				}
 
 			} else {
 

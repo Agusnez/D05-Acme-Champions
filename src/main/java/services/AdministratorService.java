@@ -100,6 +100,8 @@ public class AdministratorService {
 
 			this.actorService.checkEmail(administrator.getEmail(), true);
 			this.actorService.checkPhone(administrator.getPhone());
+			final String newPhoto = this.configurationService.checkURL(administrator.getPhoto());
+			administrator.setPhoto(newPhoto);
 
 			final String phone = this.actorService.checkPhone(administrator.getPhone());
 			administrator.setPhone(phone);
@@ -124,6 +126,9 @@ public class AdministratorService {
 
 			final String phone = this.actorService.checkPhone(administrator.getPhone());
 			administrator.setPhone(phone);
+
+			final String newPhoto = this.configurationService.checkURL(administrator.getPhoto());
+			administrator.setPhoto(newPhoto);
 
 			result = this.administratorRepository.save(administrator);
 
