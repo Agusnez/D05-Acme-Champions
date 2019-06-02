@@ -193,11 +193,10 @@ public class SponsorshipService {
 		} else if (sponsorship.getPlayer() == null && sponsorship.getGame() != null && sponsorship.getTeam() == null) {
 			final Game game = this.gameService.findOne(sponsorship.getGame().getId());
 
-			result = this.createWithGame(game.getId());
-
 			final Date now = new Date(System.currentTimeMillis() - 1000);
 
-			Assert.isTrue(game != null && game.getGameDate().after(now));
+			if (game != null && game.getGameDate().after(now))
+				result = this.createWithGame(game.getId());
 
 		}
 
