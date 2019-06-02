@@ -23,3 +23,5 @@
 
 	
 </display:table>
+
+<acme:cancel code="report.back" url="welcome/index.do" />
