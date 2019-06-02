@@ -2,6 +2,7 @@
 package controllers.sponsor;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -249,17 +250,21 @@ public class SponsorshipSponsorController extends AbstractController {
 		Integer sponsorshipId = null;
 		Integer sponsorshipId1 = null;
 		Integer sponsorshipId2 = null;
+		Boolean wrongDate = false;
 
-		if (sponsorship2.getGame() != null)
+		if (sponsorship2.getGame() != null) {
 			sponsorshipId = this.sponsorshipService.findSponsorshipByGameAndSponsorId(sponsorship2.getGame().getId(), this.sponsorService.findByPrincipal().getId());
+			final Date now = new Date();
+			wrongDate = sponsorship2.getGame().getGameDate().before(now);
 
+		}
 		if (sponsorship2.getPlayer() != null)
 			sponsorshipId1 = this.sponsorshipService.findSponsorshipByPlayerAndSponsorId(sponsorship2.getPlayer().getId(), this.sponsorService.findByPrincipal().getId());
 
 		if (sponsorship2.getTeam() != null)
 			sponsorshipId2 = this.sponsorshipService.findSponsorshipByTeamAndSponsorId(sponsorship2.getTeam().getId(), this.sponsorService.findByPrincipal().getId());
 
-		if (sponsorshipId != null || sponsorshipId1 != null || sponsorshipId2 != null) {
+		if (sponsorshipId != null || sponsorshipId1 != null || sponsorshipId2 != null || wrongDate == true) {
 
 			result = new ModelAndView("redirect:/welcome/index.do");
 			result.addObject("banner", banner);
