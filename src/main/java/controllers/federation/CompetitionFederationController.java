@@ -283,10 +283,10 @@ public class CompetitionFederationController {
 
 				final Team team = this.teamService.findOne(teamId);
 
-				if (team.getFunctional())
-					try {
+				final Competition competition = this.competitionService.findOne(competitionId);
 
-						final Competition competition = this.competitionService.findOne(competitionId);
+				if (team.getFunctional() && !competition.getTeams().contains(team))
+					try {
 
 						this.competitionService.addTeam(competition, team);
 

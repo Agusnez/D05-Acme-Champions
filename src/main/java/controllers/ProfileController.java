@@ -33,6 +33,7 @@ import services.PlayerService;
 import services.PresidentService;
 import services.RefereeService;
 import services.SponsorService;
+import services.StatisticalDataService;
 import domain.Actor;
 import domain.Administrator;
 import domain.Federation;
@@ -41,6 +42,7 @@ import domain.Player;
 import domain.President;
 import domain.Referee;
 import domain.Sponsor;
+import domain.StatisticalData;
 
 @Controller
 @RequestMapping("/profile")
@@ -73,31 +75,43 @@ public class ProfileController extends AbstractController {
 	@Autowired
 	private ConfigurationService	configurationService;
 
+	@Autowired
+	private StatisticalDataService	statisticalDataService;
+
 
 	@RequestMapping(value = "/displayPrincipal", method = RequestMethod.GET)
 	public ModelAndView display() {
 		ModelAndView result;
 		Actor actor;
-
-		actor = this.actorService.findOne(this.actorService.findByPrincipal().getId());
-		Assert.notNull(actor);
-
 		final String banner = this.configurationService.findConfiguration().getBanner();
+		actor = this.actorService.findOne(this.actorService.findByPrincipal().getId());
+		try {
+			Assert.notNull(actor);
 
-		final Locale locale = LocaleContextHolder.getLocale();
-		final String language = locale.getLanguage();
+			final Locale locale = LocaleContextHolder.getLocale();
+			final String language = locale.getLanguage();
 
-		result = new ModelAndView("actor/display");
-		result.addObject("actor", actor);
-		result.addObject("banner", banner);
-		result.addObject("laguageURI", "profile/displayPrincipal.do");
-		result.addObject("admin", false);
-		result.addObject("language", language);
+			result = new ModelAndView("actor/display");
+			result.addObject("actor", actor);
+			result.addObject("banner", banner);
+			result.addObject("laguageURI", "profile/displayPrincipal.do");
+			result.addObject("admin", false);
+			result.addObject("language", language);
+
+			final Authority authPlayer = new Authority();
+			authPlayer.setAuthority(Authority.PLAYER);
+			if (actor.getUserAccount().getAuthorities().contains(authPlayer)) {
+				final StatisticalData statisticalData = this.statisticalDataService.findStatisticalDataByPlayerId(actor.getId());
+				result.addObject("statisticalData", statisticalData);
+			}
+		} catch (final Exception e) {
+			result = new ModelAndView("misc/welcome");
+			result.addObject("banner", banner);
+		}
 
 		return result;
 
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit() {
 		final ModelAndView result;
