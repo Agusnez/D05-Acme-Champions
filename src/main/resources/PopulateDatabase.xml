@@ -946,7 +946,6 @@
 		<property name="phone" value="+34 6760052367" />
 		<property name="address" value="Trajano" />
 		<property name="userAccount" ref="userAccount23" />
-		<property name="team" ref="team3" />
 	</bean>
 	
 	<bean id="manager4" class="domain.Manager">
@@ -2549,7 +2548,7 @@
 		<property name="mandatoryComment" value="" />
 		<property name="offeredClause" value="40000000.0" />
 		<property name="president" ref="president5" />
-		<property name="player" ref="player2" />
+		<property name="player" ref="player20" />
 	</bean>
 	
 	<bean id="signing20" class="domain.Signing">
@@ -2579,13 +2578,7 @@
 		<property name="manager" ref="manager2" />
 	</bean>
 	
-	<bean id="hiring3" class="domain.Hiring">
-		<property name="price" value="30000000.0" />
-		<property name="status" value="ACCEPTED" />
-		<property name="mandatoryComment" value="" />
-		<property name="president" ref="president3" />
-		<property name="manager" ref="manager3" />
-	</bean>
+	
 	
 	<bean id="hiring4" class="domain.Hiring">
 		<property name="price" value="40000000.0" />
@@ -2599,8 +2592,8 @@
 		<property name="price" value="55000000.0" />
 		<property name="status" value="PENDING" />
 		<property name="mandatoryComment" value="" />
-		<property name="president" ref="president1" />
-		<property name="manager" ref="manager3" />
+		<property name="president" ref="president3" />
+		<property name="manager" ref="manager5" />
 	</bean>
 	
 	<bean id="hiring6" class="domain.Hiring">
@@ -2663,20 +2656,7 @@
 		</property>
 	</bean>
 	
-	<bean id="training3" class="domain.Training">
-		<property name="startDate" value="2019/09/30 09:00" />
-		<property name="endingDate" value="2019/09/30 13:00" />
-		<property name="place" value="Gimnasio" />
-		<property name="description" value="Sesión de musculación" />
-		<property name="manager" ref="manager3" />
-		<property name="players">
-			<list>
-				<ref bean="player11" />
-				<ref bean="player12" />
 
-			</list>
-		</property>
-	</bean>
 	
 	<!-- Games -->
 
