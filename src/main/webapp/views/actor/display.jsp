@@ -16,16 +16,6 @@
 	<security:authentication property="principal.username" var="user" />
 </security:authorize> --%>
 
-<jstl:if test="${admin}">
-	<div>
-		<jstl:if test="${!(actor eq principal)}">
-			<a href="actor/administrator/profile/deleteProfile.do?actorId=${actor.id}"><spring:message code="actor.deleteProfile"/></a>
-			<br/>
-		</jstl:if>
-	</div>
-</jstl:if>
-
-
 <security:authorize access="hasRole('FEDERATION')">
 	
 	<div><spring:message code="federation.establishmentDate" />:
