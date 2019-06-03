@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
-import services.AdministratorService;
 import services.ConfigurationService;
 import controllers.AbstractController;
 import domain.Actor;
@@ -28,9 +27,6 @@ public class AdministratorController extends AbstractController {
 
 	@Autowired
 	private ConfigurationService	configurationService;
-
-	@Autowired
-	private AdministratorService	administratorService;
 
 
 	//Methods
@@ -87,33 +83,4 @@ public class AdministratorController extends AbstractController {
 
 	}
 
-	//	@RequestMapping(value = "profile/deleteProfile", method = RequestMethod.GET)
-	//	public ModelAndView deleteProfile(@RequestParam final int actorId) {
-	//		ModelAndView result;
-	//
-	//		final Actor principal = this.actorService.findByPrincipal();
-	//
-	//		final String banner = this.configurationService.findConfiguration().getBanner();
-	//
-	//		final Boolean exist = this.actorService.existActor(actorId);
-	//
-	//		if (exist) {
-	//			final Actor delete = this.actorService.findOne(actorId);
-	//			if (!delete.equals(principal))
-	//				try {
-	//					this.actorService.masterDelete(actorId);
-	//					result = new ModelAndView("redirect:/welcome/index.do");
-	//				} catch (final Throwable oops) {
-	//					System.out.println(oops);
-	//					result = new ModelAndView("redirect:/actor/administrator/profile/displayActor.do?actorId=" + actorId);
-	//				}
-	//			else
-	//				result = new ModelAndView("redirect:/welcome/index.do");
-	//		} else {
-	//			result = new ModelAndView("misc/notExist");
-	//			result.addObject("banner", banner);
-	//		}
-	//
-	//		return result;
-	//	}
 }
