@@ -150,25 +150,39 @@ public class FormatFederationController {
 	public ModelAndView delete(Format format, final BindingResult binding) {
 		ModelAndView result;
 		final String banner = this.configurationService.findConfiguration().getBanner();
-		final Actor actor = this.actorService.findByPrincipal();
-		int id = format.getId();
-		format = this.formatService.findOne(id);
 
-		Collection<Competition> c = this.competitionService.findByFormatId(format.getId());
+		try {
+			final Actor actor = this.actorService.findByPrincipal();
+			int id = format.getId();
+			format = this.formatService.findOne(id);
 
-		if (format == null || (format.getId() != 0 && format.getFederation().getId() != actor.getId())
-				|| !c.isEmpty()) {
-			result = new ModelAndView("misc/notExist");
-			result.addObject("banner", banner);
-		} else
-			try {
-				this.formatService.delete(format);
-				result = new ModelAndView("redirect:/format/federation/list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(format, "game.commit.error");
+			if (format == null) {
+				result = new ModelAndView("misc/notExist");
+				result.addObject("banner", banner);
+			} else {
 
+				Collection<Competition> c = this.competitionService.findByFormatId(format.getId());
+
+				if (format == null || (format.getId() != 0 && format.getFederation().getId() != actor.getId())
+						|| !c.isEmpty()) {
+					result = new ModelAndView("misc/notExist");
+					result.addObject("banner", banner);
+				} else
+					try {
+						this.formatService.delete(format);
+						result = new ModelAndView("redirect:/format/federation/list.do");
+					} catch (final Throwable oops) {
+						result = this.createEditModelAndView(format, "commit.error");
+
+					}
+				
 			}
-		return result;
+			return result;
+		} catch (Exception e) {
+			result = new ModelAndView("misc/error");
+			result.addObject("banner", banner);
+			return result;
+		}
 	}
 
 	protected ModelAndView createEditModelAndView(final Format format, final String messageCode) {
