@@ -177,10 +177,6 @@
 <h2> Data export </h2>
 	<p> If you want to extract your data from the application, you can do this using a button located on your profile. By using this button, you can download
 	a .txt file with your data.</p>
-<h2> Deleting messages </h2>
-	<p> We inform you that when you delete a message that you have sent, you will only delete this message from your boxes, not from the complete system.
-	That is, the recipient of the message will keep a copy of it.</p>>
-<h2> </h2>
 	<p> </p>	
 </jstl:if>
 <jstl:if test="${language == 'es'}">
@@ -348,10 +344,6 @@
 <h2> Exportación de datos  </h2>
 	<p> Si usted quiere extraer sus datos de la aplicación, podrá hacerlo mediante un botón situado en su perfil. Al usar este botón, usted podrá descargar
 	 un archivo .txt con sus datos.</p>
-<h2> Borrado de mensajes </h2>
-	<p> Le informamos de que cuando usted realice el borrado de un mensaje que usted haya enviado solo se borrará de sus cajas, no del sistema completo.
-	Es decir el receptor del mensaje mantendrá una copia del mismo.</p>
-<h2> </h2>
 	<p> </p>
 </jstl:if>
 
