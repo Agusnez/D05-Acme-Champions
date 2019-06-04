@@ -13,14 +13,13 @@
 	
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="recipientId" />
 	<form:hidden path="senderId" />
 	
 	<acme:textbox code="message.subject" path="subject" obligatory="true"/>
 
 	<acme:textarea code="message.body" path="body" obligatory="true"/>
-		
-	<form:label path="priority">
+	
+		<form:label path="priority">
 			<spring:message code="message.priority"/>
 		</form:label>
 		<form:select path="priority" >
@@ -30,17 +29,12 @@
 		</form:select>
 		<form:errors cssClass="error" path="priority"></form:errors>
 		<br />
-		
-	<spring:message code="message.tag.system"></spring:message>
-	<acme:textbox code="message.tags" path="tags" />
+	
+	<acme:textbox code="message.tags" path="tags" readonly="true"/>
 	
 	<acme:submit name="save" code="message.save" />
 	
-	<acme:cancel code="message.cancel" url="box/actor/list.do" />
+	<acme:cancel code="message.cancel" url="welcome/index.do" />
 	
-	<jstl:if test="${message.id != 0}">
-	<acme:submit name="delete" code="message.delete" />
-	</jstl:if>	
-
 
 </form:form>  

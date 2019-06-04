@@ -66,7 +66,7 @@ public class BroadcastAdministratorController extends AbstractController {
 			else
 				try {
 
-					this.messageService.save(message2);
+					this.messageService.broadcastSystemSave(message2);
 					result = new ModelAndView("redirect:/welcome/index.do");
 				} catch (final Throwable oops) {
 					result = this.createEditModelAndView(message1, "message.commit.error");
