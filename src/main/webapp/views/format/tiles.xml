@@ -22,8 +22,12 @@
 	</definition>
 	
 	<definition name="format/edit" extends="master.page">	
-		<put-attribute name="title" value="Federación: Format" />
+		<put-attribute name="title" value="Federation: Format" />
 		<put-attribute name="body" value="/views/format/create.jsp" />
 	</definition>
 	
+	<definition name="format/display" extends="master.page">	
+		<put-attribute name="title" value="Format: Display" />
+		<put-attribute name="body" value="/views/format/display.jsp" />
+	</definition>
 </tiles-definitions>

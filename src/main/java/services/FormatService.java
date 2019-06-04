@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.Validator;
 
 import repositories.FormatRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Competition;
 import domain.Federation;
 import domain.Format;
 
@@ -23,17 +23,21 @@ public class FormatService {
 
 	// Managed Repository --------------------
 	@Autowired
-	private FormatRepository formatRepository;
+	private FormatRepository	formatRepository;
 
 	// Supporting Services -------------------
 	@Autowired
-	private ActorService actorService;
+	private ActorService		actorService;
 
 	@Autowired
-	private FederationService federationService;
+	private FederationService	federationService;
 
 	@Autowired
-	private Validator validator;
+	private Validator			validator;
+
+	@Autowired
+	private CompetitionService	competitionService;
+
 
 	// Simple CRUD methods
 
@@ -71,12 +75,18 @@ public class FormatService {
 
 		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(authFederation));
 
+		if (format.getId() != 0) {
+			Assert.isTrue(actor.getId() == format.getFederation().getId());
+			final Collection<Competition> competitionsByFormat = this.competitionService.findByFormatId(format.getId());
+			competitionsByFormat.remove(null);
+			Assert.isTrue(competitionsByFormat.isEmpty());
+		}
+
 		final Format result = this.formatRepository.save(format);
 
 		return result;
 
 	}
-
 	public void delete(final Format format) {
 		Assert.notNull(format);
 
@@ -105,13 +115,9 @@ public class FormatService {
 
 		Assert.notNull(format);
 
-		final Format formatBBDD = this.findOne(format.getId());
-		if (!(format.getType().equals("TOURNAMENT") || format.getType().equals("LEAGUE"))) {
-			binding.addError(new ObjectError("Error","El tipo tiene que ser LEAGUE o TOURNAMENT"));
-		} else {
-			format.setType(format.getType());
-		}
-		if (format.getMaximumTeams() != null && format.getMinimumTeams()!=null) {
+		format.setType(format.getType());
+
+		if (format.getMaximumTeams() != null && format.getMinimumTeams() != null)
 			if (format.getMinimumTeams() <= format.getMaximumTeams()) {
 				format.setMinimumTeams(format.getMinimumTeams());
 				format.setMaximumTeams(format.getMaximumTeams());
@@ -121,9 +127,12 @@ public class FormatService {
 				format.setMinimumTeams(actualMinimum);
 				format.setMaximumTeams(actualMaximum);
 			}
-			
-	
+
+		if (format.getId() == 0)
 			format.setFederation(fede);
+		else {
+			final Format formatBBDD = this.findOne(format.getId());
+			format.setFederation(formatBBDD.getFederation());
 		}
 
 		this.validator.validate(format, binding);

@@ -21,6 +21,7 @@
 		<spring:message code="tournament" var="tournament"/>
 		<form:option label="${tournament}" value="TOURNAMENT"/>
 	</form:select>
+	<form:errors path="type" cssClass="error" />
 
 	
 	<acme:textbox code="format.minTeams" path="minimumTeams"  obligatory="true"/>
