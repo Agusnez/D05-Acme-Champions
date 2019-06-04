@@ -55,6 +55,17 @@ ${minutesByGame.winner.name}
 
 <acme:display code="game.referee" property="${game.referee.surnames }" />
 
+<jstl:if test="${sponsorships!=null}">
+	<div>		
+		<c:forEach items="${sponsorships}" var="item">
+    		<fieldset>
+				<a target="_blank" href="${item.target}"><img src="${item.banner }" alt="Banner" width="10%" height="10%" /></a>
+			</fieldset>
+    		<br>
+</c:forEach>
+	</div>
+</jstl:if> 
+
 <acme:button name="back" code="game.back" onclick="javascript: relativeRedir('game/listAll.do');" />
 
 <security:authorize access="hasRole('REFEREE')">

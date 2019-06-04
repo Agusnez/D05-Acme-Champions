@@ -14,9 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ConfigurationService;
 import services.GameService;
 import services.MinutesService;
+import services.SponsorshipService;
 import controllers.AbstractController;
 import domain.Game;
 import domain.Minutes;
+import domain.Sponsorship;
 
 @Controller
 @RequestMapping("/game")
@@ -30,6 +32,9 @@ public class GameController extends AbstractController {
 
 	@Autowired
 	private MinutesService			minutesService;
+
+	@Autowired
+	private SponsorshipService		sponsorshipService;
 
 
 	//List para todo el mundo ------------------------------------------------------------------------------
@@ -79,6 +84,11 @@ public class GameController extends AbstractController {
 			result.addObject("haveMinutesClosed", haveMinutesClosed);
 			if (haveMinutesClosed)
 				result.addObject("minutesByGame", minutesByGame);
+
+			//Esto es para ver los sponsorships
+			final Collection<Sponsorship> sponsorships = this.sponsorshipService.findSponsorshipsByGameId(gameId);
+			if (sponsorships != null && !sponsorships.isEmpty())
+				result.addObject("sponsorships", sponsorships);
 		}
 		return result;
 	}

@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 import repositories.FormatRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Competition;
 import domain.Federation;
 import domain.Format;
 
@@ -33,6 +34,9 @@ public class FormatService {
 
 	@Autowired
 	private Validator			validator;
+
+	@Autowired
+	private CompetitionService	competitionService;
 
 
 	// Simple CRUD methods
@@ -71,12 +75,18 @@ public class FormatService {
 
 		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(authFederation));
 
+		if (format.getId() != 0) {
+			Assert.isTrue(actor.getId() == format.getFederation().getId());
+			final Collection<Competition> competitionsByFormat = this.competitionService.findByFormatId(format.getId());
+			competitionsByFormat.remove(null);
+			Assert.isTrue(competitionsByFormat.isEmpty());
+		}
+
 		final Format result = this.formatRepository.save(format);
 
 		return result;
 
 	}
-
 	public void delete(final Format format) {
 		Assert.notNull(format);
 
@@ -118,7 +128,12 @@ public class FormatService {
 				format.setMaximumTeams(actualMaximum);
 			}
 
-		format.setFederation(fede);
+		if (format.getId() == 0)
+			format.setFederation(fede);
+		else {
+			final Format formatBBDD = this.findOne(format.getId());
+			format.setFederation(formatBBDD.getFederation());
+		}
 
 		this.validator.validate(format, binding);
 

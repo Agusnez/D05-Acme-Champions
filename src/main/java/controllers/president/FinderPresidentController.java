@@ -118,7 +118,9 @@ public class FinderPresidentController extends AbstractController {
 				result = this.createEditModelAndView(finder, null);
 			else
 				try {
-					this.finderService.save(finder);
+					final Boolean areInputsDifferents = this.finderService.checkInputs(finder);
+					if (areInputsDifferents)
+						this.finderService.save(finder);
 					result = new ModelAndView("redirect:find.do");
 				} catch (final Throwable oops) {
 					result = this.createEditModelAndView(finder, "finder.commit.error");
