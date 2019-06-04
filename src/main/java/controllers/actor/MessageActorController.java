@@ -140,7 +140,7 @@ public class MessageActorController extends AbstractController {
 		exist1 = this.actorService.existActor(message2.getSenderId());
 		exist2 = this.actorService.existActor(message2.getRecipientId());
 		exist3 = message2.getId() == 0;
-		if (exist1 && exist2 && exist3) {
+		if (exist1 && exist2 && exist3 && !message2.getTags().contains("SYSTEM")) {
 			final Message message3 = this.messageService.reconstruct(message2, binding);
 			if (binding.hasErrors())
 				result = this.createEditModelAndView(message2);

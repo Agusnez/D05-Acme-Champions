@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,7 +37,7 @@ public class Game extends DomainEntity {
 	}
 
 	@SafeHtml
-	@NotNull
+	@NotBlank
 	public String getPlace() {
 		return this.place;
 	}

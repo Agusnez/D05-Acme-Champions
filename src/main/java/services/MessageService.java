@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
+import security.Authority;
 import domain.Actor;
 import domain.Box;
 import domain.Message;
@@ -73,6 +74,7 @@ public class MessageService {
 
 		result.setSenderId(actor.getId());
 		result.setRecipientId(actor.getId());
+		result.setTags("SYSTEM");
 
 		return result;
 
@@ -151,6 +153,34 @@ public class MessageService {
 		result = this.messageRepository.save(message);
 
 		return result;
+	}
+
+	public Message broadcastSystemSave(final Message message) {
+
+		Message result;
+
+		final Actor actor = this.actorService.findByPrincipal();
+		Assert.notNull(actor);
+		final Authority authority = new Authority();
+		authority.setAuthority(Authority.ADMIN);
+		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(authority));
+
+		final Collection<Actor> actores = this.actorService.findAll();
+		actores.remove(actor);
+		final Collection<Box> boxes = message.getBoxes();
+
+		for (final Actor a : actores) {
+
+			final Box nb = this.boxService.findInBoxByActorId(a.getId());
+			boxes.add(nb);
+
+		}
+		message.setBoxes(boxes);
+
+		result = this.messageRepository.save(message);
+
+		return result;
+
 	}
 
 	public Message save2(final Message message) {
@@ -256,7 +286,17 @@ public class MessageService {
 		result.setSubject(message.getSubject());
 		result.setTags(message.getTags());
 
-		if (message.getId() == 0) {
+		if (message.getTags() != null && message.getTags().equals("SYSTEM")) {
+
+			final Collection<Box> boxes = new ArrayList<Box>();
+			boxes.add(this.boxService.findOutBoxByActorId(message.getSenderId()));
+			result.setBoxes(boxes);
+
+			Date momentSent;
+			momentSent = new Date(System.currentTimeMillis() - 1000);
+			result.setMoment(momentSent);
+
+		} else if (message.getId() == 0) {
 			final Collection<Box> boxes = new ArrayList<Box>();
 			boxes.add(this.boxService.findOutBoxByActorId(message.getSenderId()));
 			boxes.add(this.boxService.findInBoxByActorId(message.getRecipientId()));
