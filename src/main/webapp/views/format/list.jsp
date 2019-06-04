@@ -19,7 +19,7 @@
 	
 	<acme:column property="minimumTeams" titleKey="format.minTeams" value= "${row.maximumTeams}: "/>
 	
-	<acme:url href="format/federation/edit.do?formatId=${row.id}" code="format.display" />
+	<acme:url href="format/federation/display.do?formatId=${row.id}" code="format.display" />
 	
 	</display:table>
 		

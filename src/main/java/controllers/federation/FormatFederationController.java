@@ -181,6 +181,28 @@ public class FormatFederationController {
 		}
 	}
 
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int formatId) {
+		ModelAndView result;
+
+		final Format formatFind = this.formatService.findOne(formatId);
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		if (formatFind == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			final Collection<Competition> competitionsByFormat = this.competitionService.findByFormatId(formatId);
+			competitionsByFormat.remove(null);
+
+			result = new ModelAndView("format/display");
+			result.addObject("format", formatFind);
+			result.addObject("banner", banner);
+			result.addObject("numberCompetitions", competitionsByFormat.size());
+		}
+		return result;
+	}
+
 	protected ModelAndView createEditModelAndView(final Format format, final String messageCode) {
 		final ModelAndView result;
 

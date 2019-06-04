@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
+import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,24 +27,27 @@ public class FinderService {
 
 	// Managed Repository ------------------------
 	@Autowired
-	private FinderRepository	finderRepository;
+	private FinderRepository		finderRepository;
 
 	// Supporting services ------------------------
 
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
 
 	@Autowired
-	private Validator			validator;
+	private Validator				validator;
 
 	@Autowired
-	private ManagerService		managerService;
+	private ManagerService			managerService;
 
 	@Autowired
-	private PlayerService		playerService;
+	private PlayerService			playerService;
 
 	@Autowired
-	private PresidentService	presidentService;
+	private PresidentService		presidentService;
+
+	@Autowired
+	private ConfigurationService	configurationService;
 
 
 	public Finder create() {
@@ -115,6 +119,8 @@ public class FinderService {
 		final Collection<Player> players = new HashSet<Player>();
 		finder.setManagers(managers);
 		finder.setPlayers(players);
+		finder.setKeyWord("");
+		finder.setPosition("");
 	}
 
 	//	public void deleteFinderActor(final int actorId) {
@@ -167,6 +173,23 @@ public class FinderService {
 			res = true;
 
 		return res;
+	}
+
+	public Boolean checkInputs(final Finder finder) {
+		final Finder finderBBDD = this.findOne(finder.getId());
+		Boolean areDifferents = false;
+
+		final Boolean key = finder.getKeyWord().equals(finderBBDD.getKeyWord());
+		final Boolean pos = finder.getPosition().equals(finderBBDD.getPosition());
+
+		final Date currentTime = new Date(System.currentTimeMillis() - 1000);
+		final Interval interval = new Interval(finderBBDD.getLastUpdate().getTime(), currentTime.getTime());
+		final Integer timeOut = this.configurationService.findConfiguration().getFinderTime();
+
+		if (!key || !pos || interval.toDuration().getStandardHours() > timeOut)
+			areDifferents = true;
+
+		return areDifferents;
 	}
 
 }

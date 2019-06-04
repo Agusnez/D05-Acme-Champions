@@ -26,4 +26,9 @@
 		<put-attribute name="body" value="/views/format/create.jsp" />
 	</definition>
 	
+	<definition name="format/display" extends="master.page">	
+		<put-attribute name="title" value="Formato: Mostrar" />
+		<put-attribute name="body" value="/views/format/display.jsp" />
+	</definition>
+	
 </tiles-definitions>
