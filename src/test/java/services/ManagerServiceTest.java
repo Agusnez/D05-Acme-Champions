@@ -249,7 +249,8 @@ public class ManagerServiceTest extends AbstractTest {
 	 * a)(Level B) Requirement 32.2: An actor who is authenticated as manager must be able to see a prediction of the next matches.
 	 * 
 	 * b) Negative cases:
-	 * 2. Incorrect result
+	 * 2. Incorrect results
+	 * 3. Incorrect results2
 	 * 
 	 * 
 	 * c) Sentence coverage
@@ -268,6 +269,9 @@ public class ManagerServiceTest extends AbstractTest {
 			{
 				9.999, IllegalArgumentException.class
 			},//2. Incorrect results
+			{
+				-1.0, IllegalArgumentException.class
+			},//3. Incorrect results2
 
 		};
 
