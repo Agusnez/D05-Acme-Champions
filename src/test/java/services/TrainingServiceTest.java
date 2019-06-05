@@ -449,7 +449,6 @@ public class TrainingServiceTest extends AbstractTest {
 	 * -findTrainingsByPlayerId():100%
 	 * 
 	 * d) Data coverage
-	 * -Training: 0%
 	 */
 
 	@Test

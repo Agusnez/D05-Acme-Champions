@@ -44,17 +44,19 @@ public class TeamServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 29.2: An actor who is not authenticated must be able to: View next matches as well as the already finished ones.
+	 * a)(Level C) Requirement 11.1: An actor who is authenticated as a president must be able to: Create a team.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name is blank
 	 * 3. Name is null
 	 * 
 	 * c) Sentence coverage
-	 * -findAllGamesOrdered():100%
+	 * -create: 100%
+	 * -save: 98.6%
+	 * -flush: 100%
+	 * 
 	 * 
 	 * d) Data coverage
-	 * -Game: 0%
 	 */
 
 	@Test
@@ -109,6 +111,24 @@ public class TeamServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * ACME.CHAMPIONS
+	 * a)(Level C) Requirement 11.1: An actor who is authenticated as a president must be able to: Create a team.
+	 * 
+	 * b) Negative cases:
+	 * 2. StadiumName is blank
+	 * 3. StadiumName is null
+	 * 
+	 * c) Sentence coverage
+	 * 
+	 * -findTeamByPresidentId: 100%
+	 * -save: 98.6%
+	 * -flush: 100%
+	 * 
+	 * 
+	 * d) Data coverage
+	 */
+
 	@Test
 	public void driverEditTeam() {
 		final Object testingData[][] = {
@@ -117,10 +137,10 @@ public class TeamServiceTest extends AbstractTest {
 			},//1. All fine
 			{
 				"name1", "address1", "", "http://url.com", 5, "president1", ConstraintViolationException.class
-			},//2. Name = blank
+			},//2. StadiumName = blank
 			{
 				"name1", "address1", null, "http://url.com", 5, "president1", ConstraintViolationException.class
-			},//3. Name = null
+			},//3. StadiumName = null
 
 		};
 
@@ -173,12 +193,12 @@ public class TeamServiceTest extends AbstractTest {
 	 * 
 	 * c) Sentence coverage
 	 * -findTeamByPresidentId(): 100%
-	 * -save(): 92.2%
-	 * -findPlayersByTeamId(): 100%
-	 * -findManagerByTeamId(): 100%
+	 * -save(): 98.6%
+	 * -findOne: 100%
+	 * -flush: 100%
+	 * 
 	 * 
 	 * d) Data coverage
-	 * -Team: 0%
 	 */
 
 	@Test
@@ -249,5 +269,15 @@ public class TeamServiceTest extends AbstractTest {
 
 		return date;
 	}
+
+	/*
+	 * -------Coverage MessageService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * 
+	 * TeamService:50.7 %
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 */
 
 }

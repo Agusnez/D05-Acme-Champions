@@ -244,7 +244,20 @@ public class ManagerServiceTest extends AbstractTest {
 
 	}
 
-	//Falta la cabecera de este Test
+	/*
+	 * ACME.CHAMPIONS
+	 * a)(Level B) Requirement 32.2: An actor who is authenticated as manager must be able to see a prediction of the next matches.
+	 * 
+	 * b) Negative cases:
+	 * 2. Incorrect result
+	 * 
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * 
+	 * 
+	 * d) Data coverage
+	 */
 	@Test
 	public void driverGoalPrediction() {
 		final Object testingData[][] = {
