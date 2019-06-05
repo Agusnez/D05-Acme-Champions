@@ -259,7 +259,6 @@ public class ManagerServiceTest extends AbstractTest {
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateGoalPrediction((String) testingData[i][0], (Double) testingData[i][1], (Class<?>) testingData[i][2]);
 			this.templateGoalPrediction((Double) testingData[i][0], (Class<?>) testingData[i][1]);
 
 	}
