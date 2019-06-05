@@ -148,79 +148,7 @@ public class ActorService {
 		return res;
 
 	}
-	//	public String authorityAuthenticated() {
-	//		String res = null;
-	//
-	//		final Authority authority1 = new Authority();
-	//		authority1.setAuthority(Authority.COMPANY);
-	//		final Authority authority2 = new Authority();
-	//		authority2.setAuthority(Authority.ROOKIE);
-	//		final Authority authority3 = new Authority();
-	//		authority3.setAuthority(Authority.ADMIN);
-	//
-	//		if (LoginService.getPrincipal().getAuthorities().contains(authority1))
-	//			res = "rookie";
-	//		else if (LoginService.getPrincipal().getAuthorities().contains(authority2))
-	//			res = "company";
-	//		else if (LoginService.getPrincipal().getAuthorities().contains(authority3))
-	//			res = "admin";
-	//		return res;
-	//
-	//	}
 
-	//	public void banOrUnBanActor(final Actor actor) {
-	//		final Collection<Authority> authorities = actor.getUserAccount().getAuthorities();
-	//
-	//		final Actor principal = this.findByPrincipal();
-	//
-	//		Assert.isTrue(!actor.equals(principal));
-	//
-	//		final Authority authAdmin = new Authority();
-	//		authAdmin.setAuthority(Authority.ADMIN);
-	//
-	//		final Authority authRookie = new Authority();
-	//		authRookie.setAuthority(Authority.ROOKIE);
-	//
-	//		final Authority authCompany = new Authority();
-	//		authCompany.setAuthority(Authority.COMPANY);
-	//
-	//		final Authority authProvider = new Authority();
-	//		authProvider.setAuthority(Authority.PROVIDER);
-	//
-	//		final Authority authAuditor = new Authority();
-	//		authProvider.setAuthority(Authority.AUDITOR);
-	//
-	//		if (authorities.contains(authAdmin)) {
-	//			final Administrator administrator = this.administratorService.findOne(actor.getId());
-	//			final UserAccount userAccount = administrator.getUserAccount();
-	//			userAccount.setIsNotBanned(!userAccount.getIsNotBanned());
-	//			this.userAccountService.save(userAccount);
-	//
-	//		} else if (authorities.contains(authRookie)) {
-	//			final Rookie rookie = this.rookieService.findOne(actor.getId());
-	//			final UserAccount userAccount = rookie.getUserAccount();
-	//			userAccount.setIsNotBanned(!userAccount.getIsNotBanned());
-	//			this.userAccountService.save(userAccount);
-	//
-	//		} else if (authorities.contains(authCompany)) {
-	//			final Company company = this.companyService.findOne(actor.getId());
-	//			final UserAccount userAccount = company.getUserAccount();
-	//			userAccount.setIsNotBanned(!userAccount.getIsNotBanned());
-	//			this.userAccountService.save(userAccount);
-	//
-	//		} else if (authorities.contains(authProvider)) {
-	//			final Provider provider = this.providerService.findOne(actor.getId());
-	//			final UserAccount userAccount = provider.getUserAccount();
-	//			userAccount.setIsNotBanned(!userAccount.getIsNotBanned());
-	//			this.userAccountService.save(userAccount);
-	//		} else if (authorities.contains(authAuditor)) {
-	//			final Auditor auditor = this.auditorService.findOne(actor.getId());
-	//			final UserAccount userAccount = auditor.getUserAccount();
-	//			userAccount.setIsNotBanned(!userAccount.getIsNotBanned());
-	//			this.userAccountService.save(userAccount);
-	//		}
-	//
-	//	}
 	public Boolean existActor(final int actorId) {
 		Boolean res = false;
 
