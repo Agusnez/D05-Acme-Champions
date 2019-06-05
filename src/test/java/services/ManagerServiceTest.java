@@ -291,7 +291,7 @@ public class ManagerServiceTest extends AbstractTest {
 
 			final Double result = this.configurationService.goalPrediction(manager.getTeam().getId());
 
-			Assert.isTrue(expectedValue == result);
+			Assert.isTrue(expectedValue.equals(result));
 
 			this.unauthenticate();
 
