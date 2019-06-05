@@ -1,6 +1,10 @@
 
 package services;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
@@ -38,26 +42,42 @@ public class TeamServiceTest extends AbstractTest {
 	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
+	/*
+	 * ACME.CHAMPIONS
+	 * a)(Level B) Requirement 29.2: An actor who is not authenticated must be able to: View next matches as well as the already finished ones.
+	 * 
+	 * b) Negative cases:
+	 * 2. Name is blank
+	 * 3. Name is null
+	 * 
+	 * c) Sentence coverage
+	 * -findAllGamesOrdered():100%
+	 * 
+	 * d) Data coverage
+	 * -Game: 0%
+	 */
+
 	@Test
 	public void driverCreateTeam() {
 		final Object testingData[][] = {
 			{
-				"name1", "address1", "nameStadium1", "http://url.com", 5, "president4", null
+				"name1", "address1", "nameStadium1", "http://url.com", 5, "president4", "1999/09/30", null
 			},//1. All fine
 			{
-				"", "address1", "nameStadium1", "http://url.com", 5, "president4", ConstraintViolationException.class
+				"", "address1", "nameStadium1", "http://url.com", 5, "president4", "1999/09/30", ConstraintViolationException.class
 			},//2. Name = blank
 			{
-				null, "address1", "nameStadium1", "http://url.com", 5, "president4", ConstraintViolationException.class
+				null, "address1", "nameStadium1", "http://url.com", 5, "president4", "1999/09/30", ConstraintViolationException.class
 			},//3. Name = null
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreateTeam((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Integer) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
+			this.templateCreateTeam((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Integer) testingData[i][4], (String) testingData[i][5],
+				this.convertStringToDate((String) testingData[i][6]), (Class<?>) testingData[i][7]);
 	}
 
-	protected void templateCreateTeam(final String name, final String address, final String nameStadium, final String badgeUrl, final Integer trackRecord, final String username, final Class<?> expected) {
+	protected void templateCreateTeam(final String name, final String address, final String nameStadium, final String badgeUrl, final Integer trackRecord, final String username, final Date establishmentDate, final Class<?> expected) {
 
 		Class<?> caught;
 
@@ -75,6 +95,7 @@ public class TeamServiceTest extends AbstractTest {
 			team.setStadiumName(nameStadium);
 			team.setBadgeUrl(badgeUrl);
 			team.setTrackRecord(trackRecord);
+			team.setEstablishmentDate(establishmentDate);
 
 			this.teamService.save(team);
 			this.teamService.flush();
@@ -212,6 +233,21 @@ public class TeamServiceTest extends AbstractTest {
 		this.rollbackTransaction();
 		super.checkExceptions(expected, caught);
 
+	}
+
+	protected Date convertStringToDate(final String dateString) {
+		Date date = null;
+
+		if (dateString != null) {
+			final DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+			try {
+				date = df.parse(dateString);
+			} catch (final Exception ex) {
+				System.out.println(ex);
+			}
+		}
+
+		return date;
 	}
 
 }
