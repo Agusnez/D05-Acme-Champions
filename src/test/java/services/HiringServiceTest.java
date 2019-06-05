@@ -173,7 +173,7 @@ public class HiringServiceTest extends AbstractTest {
 	 * 
 	 * c) Sentence coverage
 	 * -save(): 46,2%
-	 * -reconstruct():51,4%
+	 * -reconstruct():51,2%
 	 * 
 	 * d) Data coverage
 	 * -Hiring: 0%
@@ -239,7 +239,7 @@ public class HiringServiceTest extends AbstractTest {
 	 * -------Coverage HiringService-------
 	 * 
 	 * ----TOTAL SENTENCE COVERAGE:
-	 * HiringService = 32,7%
+	 * HiringService = 40.8%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
 	 * Hiring = 0%

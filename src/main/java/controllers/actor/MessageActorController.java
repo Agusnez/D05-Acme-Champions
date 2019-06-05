@@ -18,6 +18,7 @@ import services.ConfigurationService;
 import services.MessageService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Box;
 import domain.Message;
 import forms.MessageForm;
 
@@ -87,10 +88,10 @@ public class MessageActorController extends AbstractController {
 		if (existMessage && existBox) {
 
 			security = this.messageService.securityMessage(boxId);
+			message1 = this.messageService.findOne(messageId);
+			final Box box = this.boxService.findOne(boxId);
 
-			if (security) {
-
-				message1 = this.messageService.findOne(messageId);
+			if (security && message1.getBoxes().contains(box)) {
 
 				result = new ModelAndView("message/display");
 				result.addObject("message1", message1);
@@ -187,8 +188,9 @@ public class MessageActorController extends AbstractController {
 				message1 = this.messageService.findOne(messageId);
 
 				security2 = message1.getRecipient().equals(actor) || message1.getSender().equals(actor);
+				final Box box = this.boxService.findOne(boxId);
 
-				if (security2) {
+				if (security2 && message1.getBoxes().contains(box)) {
 
 					this.messageService.delete(message1);
 

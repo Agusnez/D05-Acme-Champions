@@ -187,8 +187,9 @@ public class FormatFederationController {
 
 		final Format formatFind = this.formatService.findOne(formatId);
 		final String banner = this.configurationService.findConfiguration().getBanner();
+		final Actor actor = this.actorService.findByPrincipal();
 
-		if (formatFind == null) {
+		if (formatFind == null || (formatFind != null && formatFind.getFederation().getId() != actor.getId())) {
 			result = new ModelAndView("misc/notExist");
 			result.addObject("banner", banner);
 		} else {

@@ -37,9 +37,6 @@ public class ReportServiceTest extends AbstractTest {
 	private PlayerService	playerService;
 
 	@Autowired
-	private TeamService		teamService;
-
-	@Autowired
 	private ManagerService	managerService;
 
 
@@ -197,13 +194,13 @@ public class ReportServiceTest extends AbstractTest {
 	public void driverListReport() {
 		final Object testingData[][] = {
 			{
-				"manager1", "manager1", 0, null
+				"manager1", "manager1", 1, null
 			},//1. All fine
 			{
 				"manager1", "manager1", 777, IllegalArgumentException.class
 			},//2. Not expected number
 			{
-				"manager1", "president1", 0, IllegalArgumentException.class
+				"manager1", "president1", 1, IllegalArgumentException.class
 			},//3. Invalid authority
 
 		};
