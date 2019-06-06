@@ -409,4 +409,14 @@ public class GameServiceTest extends AbstractTest {
 		return date;
 	}
 
+	/*
+	 * -------Coverage GameService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * GameService = 56,6%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Game = 0%
+	 */
+
 }

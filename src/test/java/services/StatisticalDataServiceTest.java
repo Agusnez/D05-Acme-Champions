@@ -105,4 +105,14 @@ public class StatisticalDataServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * -------Coverage StatisticalDataService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * StatisticalDataService = 22,7%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * StatisticalData = 0%
+	 */
+
 }

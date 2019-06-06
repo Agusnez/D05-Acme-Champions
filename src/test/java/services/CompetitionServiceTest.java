@@ -281,4 +281,14 @@ public class CompetitionServiceTest extends AbstractTest {
 
 		return date;
 	}
+
+	/*
+	 * -------Coverage CompetitionService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * CompetitionService = 12%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Competition = 0%
+	 */
 }

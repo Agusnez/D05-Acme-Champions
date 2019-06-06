@@ -493,4 +493,14 @@ public class TrainingServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * -------Coverage TrainingService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * TrainingService = 74,4%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Sponsor = 0%
+	 */
+
 }

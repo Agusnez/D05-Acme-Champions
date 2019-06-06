@@ -222,4 +222,14 @@ public class SponsorshipServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * -------Coverage SponsorshipService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * SponsorService = 22,9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * sponsorship = 0%
+	 */
+
 }

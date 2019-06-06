@@ -271,7 +271,7 @@ public class TeamServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * -------Coverage MessageService-------
+	 * -------Coverage TeamService -------
 	 * 
 	 * ----TOTAL SENTENCE COVERAGE:
 	 * 
