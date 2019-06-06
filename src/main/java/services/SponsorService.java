@@ -81,6 +81,9 @@ public class SponsorService {
 		Assert.notNull(sponsor);
 		Sponsor result;
 
+		final Collection<String> makes = this.configurationService.findConfiguration().getMakes();
+		Assert.isTrue(makes.contains(sponsor.getCreditCard().getMake()));
+
 		if (sponsor.getId() != 0) {
 
 			final Actor actor = this.actorService.findByPrincipal();

@@ -34,3 +34,5 @@
 <jstl:if test="${!player.punished}">
 	<a href="report/president/punish.do?playerId=${player.id}"><spring:message code="report.punish"/></a>
 </jstl:if>
+<br><br>
+<acme:button name="back" code="report.back" onclick="javascript: relativeRedir('report/president/listPlayers.do');" />

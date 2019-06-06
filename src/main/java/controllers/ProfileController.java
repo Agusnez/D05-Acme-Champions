@@ -10,6 +10,7 @@
 
 package controllers;
 
+import java.util.Collection;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -177,6 +178,8 @@ public class ProfileController extends AbstractController {
 		result.addObject("banner", banner);
 		result.addObject("laguageURI", "profile/edit.do");
 		result.addObject("defaultCountry", defaultCountry);
+		final Collection<String> makes = this.configurationService.findConfiguration().getMakes();
+		result.addObject("makes", makes);
 
 		return result;
 	}
@@ -432,6 +435,8 @@ public class ProfileController extends AbstractController {
 		result.addObject("messageError", messageCode);
 		final String countryCode = this.configurationService.findConfiguration().getCountryCode();
 		result.addObject("defaultCountry", countryCode);
+		final Collection<String> makes = this.configurationService.findConfiguration().getMakes();
+		result.addObject("makes", makes);
 
 		return result;
 	}

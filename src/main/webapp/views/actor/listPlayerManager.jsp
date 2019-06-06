@@ -142,8 +142,14 @@
 
 </jstl:if>
 </security:authorize>
-
+<br>
+<security:authorize access="hasRole('MANAGER')">
 <acme:button name="back" code="actor.back" onclick="javascript: relativeRedir('welcome/index.do');" />
+</security:authorize>
+
+<security:authorize access="hasRole('PRESIDENT')">
+<acme:button name="back" code="actor.back" onclick="javascript: relativeRedir('team/president/display.do');" />
+</security:authorize>
 
 <security:authorize access="hasRole('PRESIDENT')">
 <script type="text/javascript">

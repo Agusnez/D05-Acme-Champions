@@ -35,7 +35,7 @@
 	
 	<jstl:if test="${signing.id != 0 }">
 		
-		<acme:textbox code="signing.mandatoryComment" path="mandatoryComment" obligatory="true"/>
+		<acme:textbox code="signing.mandatoryComment" path="mandatoryComment" obligatory="false"/>
 		
 	</jstl:if>
 	

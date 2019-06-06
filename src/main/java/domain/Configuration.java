@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
@@ -35,6 +36,7 @@ public class Configuration extends DomainEntity {
 
 	@ElementCollection
 	@NotNull
+	@NotEmpty
 	public Collection<String> getSpamWords() {
 		return this.spamWords;
 	}
@@ -107,6 +109,7 @@ public class Configuration extends DomainEntity {
 
 	@ElementCollection
 	@NotNull
+	@NotEmpty
 	public Collection<String> getMakes() {
 		return this.makes;
 	}

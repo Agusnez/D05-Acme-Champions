@@ -220,7 +220,10 @@ public class TrainingManagerController extends AbstractController {
 			result = new ModelAndView("misc/notExist");
 			result.addObject("banner", banner);
 		} else {
-			security1 = player.getTeam().getId() == this.managerService.findByPrincipal().getTeam().getId();
+			if (player.getTeam() != null)
+				security1 = player.getTeam().getId() == this.managerService.findByPrincipal().getTeam().getId();
+			else
+				security1 = false;
 			security2 = this.trainingService.trainingManagerSecurity(trainingId);
 			final Boolean startDateGood = this.checkStartDate(training);
 

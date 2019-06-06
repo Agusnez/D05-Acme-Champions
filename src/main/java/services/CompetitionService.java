@@ -158,6 +158,9 @@ public class CompetitionService {
 		authority.setAuthority(Authority.FEDERATION);
 		Assert.isTrue((actor.getUserAccount().getAuthorities().contains(authority)));
 
+		final Date currentDate = new Date(System.currentTimeMillis() - 1000);
+		Assert.isTrue(competition.getStartDate().after(currentDate));
+
 		if (competition.getId() == 0)
 			res = this.competitionRepository.save(competition);
 		else {
@@ -429,8 +432,8 @@ public class CompetitionService {
 
 		return res;
 	}
-	
-	public Collection<Competition> findByFormatId(int id) {
+
+	public Collection<Competition> findByFormatId(final int id) {
 		return this.competitionRepository.findByFormatId(id);
 	}
 

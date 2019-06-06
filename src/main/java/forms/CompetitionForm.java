@@ -3,6 +3,8 @@ package forms;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class CompetitionForm {
 
 	private String	nameTrophy;
@@ -20,6 +22,7 @@ public class CompetitionForm {
 		this.nameTrophy = nameTrophy;
 	}
 
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	public Date getStartDate() {
 		return this.startDate;
 	}

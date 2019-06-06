@@ -248,7 +248,7 @@ public class CompetitionFederationController {
 				result = new ModelAndView("competition/listAddTeam");
 				result.addObject("competitionId", competitionId);
 				result.addObject("teamsAll", teamsAll);
-				result.addObject("requestURI", "competition/fedearation/list.do");
+				result.addObject("requestURI", "competition/federation/listAddTeam.do?competitionId=" + competitionId);
 				result.addObject("pagesize", 5);
 				result.addObject("banner", banner);
 				result.addObject("language", LocaleContextHolder.getLocale().getLanguage());

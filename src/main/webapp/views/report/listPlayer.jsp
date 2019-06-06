@@ -12,7 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
-<display:table name="players" pagesize="10" id="row1" requestURI="${requestUri}">
+<display:table name="players" pagesize="5" id="row1" requestURI="${requestUri}">
 	
 	<display:column titleKey="report.player">
 		<jstl:out value="${row1.squadNumber} - ${row1.squadName}" />

@@ -297,7 +297,7 @@ public class MinutesService {
 		if (result.getHomeScore() == result.getVisitorScore()) {
 			if (!result.getGame().getFriendly())
 				try {
-					Assert.isTrue(competition.getFormat().getType() == "TOURNAMENT");
+					Assert.isTrue(competition.getFormat().getType().equals("LEAGUE"));
 				} catch (final Exception e) {
 					throw new DataIntegrityViolationException("tie-tournament");
 				}

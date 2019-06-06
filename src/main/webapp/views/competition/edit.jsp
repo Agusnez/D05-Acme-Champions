@@ -16,7 +16,7 @@
 	
 	<acme:textbox code="competition.nameTrophy" path="nameTrophy" obligatory="true"/>
 	
-	<acme:textbox code="competition.startDate" path="startDate" obligatory="true"/>
+	<acme:textbox code="competition.startDate" path="startDate" placeholder="yyyy/MM/dd" obligatory="true"/>
 	
 	<form:label path="formatId">
 		<spring:message code="competition.format"></spring:message>

@@ -41,6 +41,30 @@
 
 	</bean>
 	
+	<bean id="box1" class="domain.Box">
+		<property name="name" value="in box" />
+		<property name="actor" ref="administrator1" />
+		
+	</bean>
+
+	<bean id="box2" class="domain.Box">
+		<property name="name" value="out box" />
+		<property name="actor" ref="administrator1" />
+	
+	</bean>
+
+	<bean id="box3" class="domain.Box">
+		<property name="name" value="trash box" />
+		<property name="actor" ref="administrator1" />
+		
+	</bean>
+
+	<bean id="box4" class="domain.Box">
+		<property name="name" value="spam box" />
+		<property name="actor" ref="administrator1" />
+		
+	</bean>
+	
 	<!-- Other domain beans come here -->
 	
 	<!-- configuration -->

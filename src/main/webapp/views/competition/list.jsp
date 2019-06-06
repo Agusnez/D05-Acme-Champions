@@ -15,10 +15,8 @@
 <display:table name="competitions" id="row" requestURI="${requestURI }" pagesize="5">
 
 	<spring:message code="dateFormat" var="format"/>
-	<spring:message code="timeFormat" var="formatTime"/>
 	<display:column titleKey="competition.startDate"> 
 		<fmt:formatDate type="date" value="${row.startDate }" pattern="${format}" />
-		<fmt:formatDate type="time" value="${row.startDate }" pattern="${formatTime}" />
 	</display:column>
 	
 	<acme:column property="nameTrophy" titleKey="competition.nameTrophy" value= "${row.nameTrophy}: "/>
@@ -45,7 +43,7 @@
 	</display:table>
 	
 	<jstl:if test="${teamError }">
-		<spring:message code="competition.error" />
+		<div class="error"><spring:message code="competition.error" /></div>
 		<br>
 	</jstl:if>
 	
