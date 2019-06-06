@@ -70,7 +70,7 @@ public class HistoryServiceTest extends AbstractTest {
 				"player2", IllegalArgumentException.class
 			},//2. Not history
 			{
-				null, NullPointerException.class
+				null, IllegalArgumentException.class
 			},//3. Null object
 
 		};
@@ -88,6 +88,8 @@ public class HistoryServiceTest extends AbstractTest {
 		try {
 
 			this.startTransaction();
+
+			Assert.isTrue(historyBean != null);
 
 			final History history = this.historyService.findOne(super.getEntityId(historyBean));
 
@@ -129,7 +131,7 @@ public class HistoryServiceTest extends AbstractTest {
 				"manager1", IllegalArgumentException.class
 			},//2. Invalid authority
 			{
-				null, NullPointerException.class
+				null, IllegalArgumentException.class
 			},//3. Null authenticate
 		};
 
@@ -144,6 +146,8 @@ public class HistoryServiceTest extends AbstractTest {
 		try {
 
 			this.startTransaction();
+
+			Assert.isTrue(username != null);
 
 			super.authenticate(username);
 

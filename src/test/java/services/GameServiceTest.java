@@ -350,7 +350,7 @@ public class GameServiceTest extends AbstractTest {
 	 */
 
 	@Test
-	public void driverDisplayTraining() {
+	public void driverDisplayGame() {
 		final Object testingData[][] = {
 
 			{
@@ -358,19 +358,19 @@ public class GameServiceTest extends AbstractTest {
 			},//1. All fine
 			{
 				"player2", IllegalArgumentException.class
-			},//2. Not training
+			},//2. Not match
 			{
-				null, NullPointerException.class
+				null, IllegalArgumentException.class
 			},//3. Null object
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateDisplayTraining((String) testingData[i][0], (Class<?>) testingData[i][1]);
+			this.templateDisplayGame((String) testingData[i][0], (Class<?>) testingData[i][1]);
 
 	}
 
-	protected void templateDisplayTraining(final String gameId, final Class<?> expected) {
+	protected void templateDisplayGame(final String gameId, final Class<?> expected) {
 
 		Class<?> caught;
 
@@ -378,6 +378,8 @@ public class GameServiceTest extends AbstractTest {
 		try {
 
 			this.startTransaction();
+
+			Assert.isTrue(gameId != null);
 
 			final Game game = this.gameService.findOne(super.getEntityId(gameId));
 

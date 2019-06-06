@@ -189,7 +189,7 @@ public class SponsorshipServiceTest extends AbstractTest {
 				"player2", IllegalArgumentException.class
 			},//2. Not training
 			{
-				null, NullPointerException.class
+				null, IllegalArgumentException.class
 			},//3. Null object
 
 		};
@@ -207,6 +207,8 @@ public class SponsorshipServiceTest extends AbstractTest {
 		try {
 
 			this.startTransaction();
+
+			Assert.isTrue(sponsorshipId != null);
 
 			final Sponsorship sponsorship = this.sponsorshipService.findOne(super.getEntityId(sponsorshipId));
 
