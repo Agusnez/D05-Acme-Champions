@@ -49,7 +49,8 @@ public class MessageServiceTest extends AbstractTest {
 	 * a)(Level B)Requirement 30.1 : Actors can exchange messages
 	 * 
 	 * b)Negative cases:
-	 * 2.
+	 * 2. Body blank
+	 * 3. Subject blank
 	 * 
 	 * c) Sentence coverage:
 	 * -create3()=100%
@@ -58,7 +59,6 @@ public class MessageServiceTest extends AbstractTest {
 	 * 
 	 * 
 	 * d) Data coverage:
-	 * -Message=0%
 	 */
 	@Test
 	public void driverExchangeMessage() {
@@ -129,8 +129,8 @@ public class MessageServiceTest extends AbstractTest {
 	 * 
 	 * ----TOTAL SENTENCE COVERAGE:
 	 * 
+	 * MessageService: 16,3%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Message =
 	 */
 }

@@ -64,7 +64,7 @@ public class GameServiceTest extends AbstractTest {
 	public void driverListGamesOrdered() {
 		final Object testingData[][] = {
 			{
-				5, null
+				7, null
 			},//1. All fine
 			{
 				10, IllegalArgumentException.class

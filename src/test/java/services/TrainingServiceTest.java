@@ -236,13 +236,13 @@ public class TrainingServiceTest extends AbstractTest {
 	public void driverDeleteTraining() {
 		final Object testingData[][] = {
 			{
-				"manager3", "training3", null
+				"manager1", "training1", null
 			},//1. All fine
 			{
-				"manager1", "training3", IllegalArgumentException.class
+				"manager1", "training3", AssertionError.class
 			},//2. The manager is not the correct manager of the training
 			{
-				"player1", "training3", IllegalArgumentException.class
+				"player1", "training3", AssertionError.class
 			},//2. The authority is not correct
 
 		};
@@ -297,34 +297,34 @@ public class TrainingServiceTest extends AbstractTest {
 	public void driverEditTraining() {
 		final Object testingData[][] = {
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", null
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager2", "training2", null
 			},//1. All fine
 			{
-				"2013/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", DataIntegrityViolationException.class
+				"2013/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", AssertionError.class
 			},//2. The start date is past
 			{
-				"2019/09/24 10:00", "2014/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", DataIntegrityViolationException.class
+				"2019/09/24 10:00", "2014/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", AssertionError.class
 			},//3. The end date is past
 			{
-				"2019/09/24 10:00", "2019/09/23 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", DataIntegrityViolationException.class
+				"2019/09/24 10:00", "2019/09/23 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", AssertionError.class
 			},//4. The end date is before start date
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager1", "training3", IllegalArgumentException.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager1", "training3", AssertionError.class
 			},//5. The manager is not the correct manager of the training
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "player1", "training3", IllegalArgumentException.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "player1", "training3", AssertionError.class
 			},//6. The authority  is incorrect
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "<script>alert('hola')</script>", "manager3", "training3", ConstraintViolationException.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "<script>alert('hola')</script>", "manager3", "training3", AssertionError.class
 			},//7. The description is not Safe HTML
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "<script>alert('hola')</script>", "Sesion prepartido", "manager3", "training3", ConstraintViolationException.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "<script>alert('hola')</script>", "Sesion prepartido", "manager3", "training3", AssertionError.class
 			},//8. The place is not Safe HTML
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "", "manager3", "training3", ConstraintViolationException.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "", "manager3", "training3", AssertionError.class
 			},//9. The description is blank
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "", "Sesion prepartido", "manager3", "training3", ConstraintViolationException.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "", "Sesion prepartido", "manager3", "training3", AssertionError.class
 			},//10. The place is blank
 
 		};
@@ -382,13 +382,13 @@ public class TrainingServiceTest extends AbstractTest {
 	public void driverAddPlayerToTraining() {
 		final Object testingData[][] = {
 			{
-				"manager3", "training3", "player13", null
+				"manager1", "training1", "player5", null
 			},//1. All fine
 			{
-				"president1", "training3", "player13", IllegalArgumentException.class
+				"president1", "training2", "player13", IllegalArgumentException.class
 			},//2. President cannot add player to training
 			{
-				"manager1", "training3", "player13", IllegalArgumentException.class
+				"manager1", "training2", "player13", IllegalArgumentException.class
 			},//3. The manager is not the correct manager of the training
 
 		};
@@ -449,7 +449,6 @@ public class TrainingServiceTest extends AbstractTest {
 	 * -findTrainingsByPlayerId():100%
 	 * 
 	 * d) Data coverage
-	 * -Training: 0%
 	 */
 
 	@Test

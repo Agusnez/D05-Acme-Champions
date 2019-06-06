@@ -2623,8 +2623,8 @@
 	<!-- Trainings -->
 
 	<bean id="training1" class="domain.Training">
-		<property name="startDate" value="2019/05/29 09:00" />
-		<property name="endingDate" value="2019/05/29 13:00" />
+		<property name="startDate" value="2019/09/29 09:00" />
+		<property name="endingDate" value="2019/09/29 13:00" />
 		<property name="place" value="Ciudad deportiva. Campo nº 2" />
 		<property name="description" value="Sesión preparatoria" />
 		<property name="manager" ref="manager1" />

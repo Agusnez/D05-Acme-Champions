@@ -1,6 +1,10 @@
 
 package services;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
@@ -38,26 +42,44 @@ public class TeamServiceTest extends AbstractTest {
 	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
+	/*
+	 * ACME.CHAMPIONS
+	 * a)(Level C) Requirement 11.1: An actor who is authenticated as a president must be able to: Create a team.
+	 * 
+	 * b) Negative cases:
+	 * 2. Name is blank
+	 * 3. Name is null
+	 * 
+	 * c) Sentence coverage
+	 * -create: 100%
+	 * -save: 98.6%
+	 * -flush: 100%
+	 * 
+	 * 
+	 * d) Data coverage
+	 */
+
 	@Test
 	public void driverCreateTeam() {
 		final Object testingData[][] = {
 			{
-				"name1", "address1", "nameStadium1", "http://url.com", 5, "president4", null
+				"name1", "address1", "nameStadium1", "http://url.com", 5, "president4", "1999/09/30", null
 			},//1. All fine
 			{
-				"", "address1", "nameStadium1", "http://url.com", 5, "president4", ConstraintViolationException.class
+				"", "address1", "nameStadium1", "http://url.com", 5, "president4", "1999/09/30", ConstraintViolationException.class
 			},//2. Name = blank
 			{
-				null, "address1", "nameStadium1", "http://url.com", 5, "president4", ConstraintViolationException.class
+				null, "address1", "nameStadium1", "http://url.com", 5, "president4", "1999/09/30", ConstraintViolationException.class
 			},//3. Name = null
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateCreateTeam((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Integer) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
+			this.templateCreateTeam((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Integer) testingData[i][4], (String) testingData[i][5],
+				this.convertStringToDate((String) testingData[i][6]), (Class<?>) testingData[i][7]);
 	}
 
-	protected void templateCreateTeam(final String name, final String address, final String nameStadium, final String badgeUrl, final Integer trackRecord, final String username, final Class<?> expected) {
+	protected void templateCreateTeam(final String name, final String address, final String nameStadium, final String badgeUrl, final Integer trackRecord, final String username, final Date establishmentDate, final Class<?> expected) {
 
 		Class<?> caught;
 
@@ -75,6 +97,7 @@ public class TeamServiceTest extends AbstractTest {
 			team.setStadiumName(nameStadium);
 			team.setBadgeUrl(badgeUrl);
 			team.setTrackRecord(trackRecord);
+			team.setEstablishmentDate(establishmentDate);
 
 			this.teamService.save(team);
 			this.teamService.flush();
@@ -88,6 +111,24 @@ public class TeamServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * ACME.CHAMPIONS
+	 * a)(Level C) Requirement 11.1: An actor who is authenticated as a president must be able to: Create a team.
+	 * 
+	 * b) Negative cases:
+	 * 2. StadiumName is blank
+	 * 3. StadiumName is null
+	 * 
+	 * c) Sentence coverage
+	 * 
+	 * -findTeamByPresidentId: 100%
+	 * -save: 98.6%
+	 * -flush: 100%
+	 * 
+	 * 
+	 * d) Data coverage
+	 */
+
 	@Test
 	public void driverEditTeam() {
 		final Object testingData[][] = {
@@ -96,10 +137,10 @@ public class TeamServiceTest extends AbstractTest {
 			},//1. All fine
 			{
 				"name1", "address1", "", "http://url.com", 5, "president1", ConstraintViolationException.class
-			},//2. Name = blank
+			},//2. StadiumName = blank
 			{
 				"name1", "address1", null, "http://url.com", 5, "president1", ConstraintViolationException.class
-			},//3. Name = null
+			},//3. StadiumName = null
 
 		};
 
@@ -152,12 +193,12 @@ public class TeamServiceTest extends AbstractTest {
 	 * 
 	 * c) Sentence coverage
 	 * -findTeamByPresidentId(): 100%
-	 * -save(): 92.2%
-	 * -findPlayersByTeamId(): 100%
-	 * -findManagerByTeamId(): 100%
+	 * -save(): 98.6%
+	 * -findOne: 100%
+	 * -flush: 100%
+	 * 
 	 * 
 	 * d) Data coverage
-	 * -Team: 0%
 	 */
 
 	@Test
@@ -213,5 +254,30 @@ public class TeamServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	protected Date convertStringToDate(final String dateString) {
+		Date date = null;
+
+		if (dateString != null) {
+			final DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+			try {
+				date = df.parse(dateString);
+			} catch (final Exception ex) {
+				System.out.println(ex);
+			}
+		}
+
+		return date;
+	}
+
+	/*
+	 * -------Coverage MessageService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * 
+	 * TeamService:50.7 %
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 */
 
 }

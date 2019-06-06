@@ -244,46 +244,67 @@ public class ManagerServiceTest extends AbstractTest {
 
 	}
 
-	//Falta la cabecera de este Test
+	/*
+	 * ACME.CHAMPIONS
+	 * a)(Level B) Requirement 32.2: An actor who is authenticated as manager must be able to see a prediction of the next matches.
+	 * 
+	 * b) Negative cases:
+	 * 2. Incorrect results
+	 * 3. Incorrect results2
+	 * 
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * 
+	 * 
+	 * d) Data coverage
+	 */
 	@Test
 	public void driverGoalPrediction() {
 		final Object testingData[][] = {
 
 			{
-				"manager1", 2.5, null
+				1.0, null
 			},//1. All fine 
 			{
-				null, 999.999, IllegalArgumentException.class
+				9.999, IllegalArgumentException.class
 			},//2. Incorrect results
+			{
+				-1.0, IllegalArgumentException.class
+			},//3. Incorrect results2
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateGoalPrediction((String) testingData[i][0], (Double) testingData[i][1], (Class<?>) testingData[i][2]);
+			this.templateGoalPrediction((Double) testingData[i][0], (Class<?>) testingData[i][1]);
 
 	}
 
-	protected void templateGoalPrediction(final String username, final Double expectedValue, final Class<?> expected) {
+	protected void templateGoalPrediction(final Double expectedValue, final Class<?> expected) {
 
 		Class<?> caught;
 
 		caught = null;
 		try {
 
-			super.authenticate(username);
+			super.authenticate("manager1");
 
 			final int id = this.managerService.findByPrincipal().getId();
 
 			final Manager manager = this.managerService.findOne(id);
 
 			final Double result = this.configurationService.goalPrediction(manager.getTeam().getId());
-			Assert.isTrue(expectedValue == result);
+
+			Assert.isTrue(expectedValue.equals(result));
+
+			this.unauthenticate();
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
+
 		}
 
-		super.checkExceptions(expected, caught);
+		this.checkExceptions(expected, caught);
 
 	}
 

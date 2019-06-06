@@ -109,13 +109,13 @@ public class FormatServiceTest extends AbstractTest {
 	public void driverEditFormat() {
 		final Object testingData[][] = {
 			{
-				"federation1", "format1", "TOURNAMENT", 2, 4, null
+				"federation1", "format2", "TOURNAMENT", 2, 4, null
 			},//1. All fine filter
 			{
-				"federation1", "format1", "otro", 2, 2, ConstraintViolationException.class
+				"federation1", "format2", "otro", 2, 2, ConstraintViolationException.class
 			},//2. The type of format is TOURNAMENT or LEAGUE
 			{
-				"federation1", "format1", null, 2, 2, ConstraintViolationException.class
+				"federation1", "format2", null, 2, 2, ConstraintViolationException.class
 			},//3. The property type is null
 
 		};
@@ -221,7 +221,7 @@ public class FormatServiceTest extends AbstractTest {
 				"president1", "format1", IllegalArgumentException.class
 			},//2. The actor is not the owner
 			{
-				"president1", null, NullPointerException.class
+				"president1", null, AssertionError.class
 			},//3. The format is null
 
 		};
@@ -267,10 +267,10 @@ public class FormatServiceTest extends AbstractTest {
 				"federation1", "format1", null
 			},//1. All fine filter
 			{
-				"federation1", "format33", NumberFormatException.class
+				"federation1", "format33", AssertionError.class
 			},//2. The number of format finded is wrong
 			{
-				"federation1", null, NullPointerException.class
+				"federation1", null, AssertionError.class
 			},//3. The query hasn't found any format
 
 		};

@@ -123,7 +123,7 @@ public class HistoryServiceTest extends AbstractTest {
 	public void driverCreateHistory() {
 		final Object testingData[][] = {
 			{
-				"player2", null
+				"player4", null
 			},//1. All fine
 			{
 				"manager1", IllegalArgumentException.class
