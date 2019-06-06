@@ -138,8 +138,12 @@ public class DownloadDataActorController extends AbstractController {
 			myString += "\r\n\r\n";
 			myString += "Messages:\r\n";
 			for (final Message msg : msgs)
-				myString += "Sender: " + msg.getSender().getName() + " " + msg.getSender().getSurnames() + " Recipient: " + msg.getRecipient().getName() + " " + msg.getRecipient().getSurnames() + " Moment: " + msg.getMoment() + " Subject: "
-					+ msg.getSubject() + " Body: " + msg.getBody() + " Tags: " + msg.getTags() + "\r\n";
+				if (msg.getRecipient() != null)
+					myString += "Sender: " + msg.getSender().getName() + " " + msg.getSender().getSurnames() + " Recipient: " + msg.getRecipient().getName() + " " + msg.getRecipient().getSurnames() + " Moment: " + msg.getMoment() + " Subject: "
+						+ msg.getSubject() + " Body: " + msg.getBody() + " Tags: " + msg.getTags() + "\r\n";
+				else
+					myString += "Sender: " + msg.getSender().getName() + " " + msg.getSender().getSurnames() + " Recipient: All" + " Moment: " + msg.getMoment() + " Subject: " + msg.getSubject() + " Body: " + msg.getBody() + " Tags: " + msg.getTags()
+						+ "\r\n";
 			myString += "\r\n\r\n";
 
 			final Authority fede = new Authority();
@@ -291,8 +295,12 @@ public class DownloadDataActorController extends AbstractController {
 			myString += "\r\n\r\n";
 			myString += "Mensajes:\r\n";
 			for (final Message msg : msgs)
-				myString += "Emisor: " + msg.getSender().getName() + " " + msg.getSender().getSurnames() + " Receptor: " + msg.getRecipient().getName() + " " + msg.getRecipient().getSurnames() + " Fecha de envio: " + msg.getMoment() + " Tema: "
-					+ msg.getSubject() + " Cuerpo: " + msg.getBody() + " Etiquetas: " + msg.getTags() + "\r\n";
+				if (msg.getRecipient() != null)
+					myString += "Emisor: " + msg.getSender().getName() + " " + msg.getSender().getSurnames() + " Receptor: " + msg.getRecipient().getName() + " " + msg.getRecipient().getSurnames() + " Fecha: " + msg.getMoment() + " Asunto: "
+						+ msg.getSubject() + " Cuerpo: " + msg.getBody() + " Etiquetas: " + msg.getTags() + "\r\n";
+				else
+					myString += "Emisor: " + msg.getSender().getName() + " " + msg.getSender().getSurnames() + " Receptor: Todos" + " Fecha: " + msg.getMoment() + " Asunto: " + msg.getSubject() + " Cuerpo: " + msg.getBody() + " Etiquetas: "
+						+ msg.getTags() + "\r\n";
 			myString += "\r\n\r\n";
 
 			final Authority fede = new Authority();
