@@ -189,7 +189,7 @@ public class SponsorshipServiceTest extends AbstractTest {
 				"player2", IllegalArgumentException.class
 			},//2. Not training
 			{
-				null, AssertionError.class
+				null, NullPointerException.class
 			},//3. Null object
 
 		};

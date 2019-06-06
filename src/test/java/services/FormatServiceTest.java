@@ -221,7 +221,7 @@ public class FormatServiceTest extends AbstractTest {
 				"president1", "format1", IllegalArgumentException.class
 			},//2. The actor is not the owner
 			{
-				"president1", null, AssertionError.class
+				"president1", null, NullPointerException.class
 			},//3. The format is null
 
 		};
@@ -267,10 +267,10 @@ public class FormatServiceTest extends AbstractTest {
 				"federation1", "format1", null
 			},//1. All fine filter
 			{
-				"federation1", "format33", AssertionError.class
+				"federation1", "format33", NumberFormatException.class
 			},//2. The number of format finded is wrong
 			{
-				"federation1", null, AssertionError.class
+				"federation1", null, NullPointerException.class
 			},//3. The query hasn't found any format
 
 		};

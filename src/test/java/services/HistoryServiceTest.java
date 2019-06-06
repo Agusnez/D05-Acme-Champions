@@ -70,7 +70,7 @@ public class HistoryServiceTest extends AbstractTest {
 				"player2", IllegalArgumentException.class
 			},//2. Not history
 			{
-				null, AssertionError.class
+				null, NullPointerException.class
 			},//3. Null object
 
 		};
@@ -129,7 +129,7 @@ public class HistoryServiceTest extends AbstractTest {
 				"manager1", IllegalArgumentException.class
 			},//2. Invalid authority
 			{
-				null, AssertionError.class
+				null, NullPointerException.class
 			},//3. Null authenticate
 		};
 

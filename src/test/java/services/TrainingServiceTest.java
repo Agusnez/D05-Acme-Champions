@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.transaction.Transactional;
-import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -133,7 +132,7 @@ public class TrainingServiceTest extends AbstractTest {
 				"player2", IllegalArgumentException.class
 			},//2. Not training
 			{
-				null, AssertionError.class
+				null, NullPointerException.class
 			},//3. Null object
 
 		};
@@ -239,10 +238,10 @@ public class TrainingServiceTest extends AbstractTest {
 				"manager1", "training1", null
 			},//1. All fine
 			{
-				"manager1", "training3", AssertionError.class
+				"manager1", "training3", NumberFormatException.class
 			},//2. The manager is not the correct manager of the training
 			{
-				"player1", "training3", AssertionError.class
+				"player1", "training3", NumberFormatException.class
 			},//2. The authority is not correct
 
 		};
@@ -300,31 +299,31 @@ public class TrainingServiceTest extends AbstractTest {
 				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager2", "training2", null
 			},//1. All fine
 			{
-				"2013/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", AssertionError.class
+				"2013/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", NumberFormatException.class
 			},//2. The start date is past
 			{
-				"2019/09/24 10:00", "2014/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", AssertionError.class
+				"2019/09/24 10:00", "2014/09/24 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", NumberFormatException.class
 			},//3. The end date is past
 			{
-				"2019/09/24 10:00", "2019/09/23 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/23 15:00", "Sevilla", "Sesion prepartido", "manager3", "training3", NumberFormatException.class
 			},//4. The end date is before start date
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager1", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "manager1", "training3", NumberFormatException.class
 			},//5. The manager is not the correct manager of the training
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "player1", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "Sesion prepartido", "player1", "training3", NumberFormatException.class
 			},//6. The authority  is incorrect
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "<script>alert('hola')</script>", "manager3", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "<script>alert('hola')</script>", "manager3", "training3", NumberFormatException.class
 			},//7. The description is not Safe HTML
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "<script>alert('hola')</script>", "Sesion prepartido", "manager3", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "<script>alert('hola')</script>", "Sesion prepartido", "manager3", "training3", NumberFormatException.class
 			},//8. The place is not Safe HTML
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "", "manager3", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "Sevilla", "", "manager3", "training3", NumberFormatException.class
 			},//9. The description is blank
 			{
-				"2019/09/24 10:00", "2019/09/24 15:00", "", "Sesion prepartido", "manager3", "training3", AssertionError.class
+				"2019/09/24 10:00", "2019/09/24 15:00", "", "Sesion prepartido", "manager3", "training3", NumberFormatException.class
 			},//10. The place is blank
 
 		};
