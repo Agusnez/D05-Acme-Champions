@@ -59,6 +59,9 @@ public class ConfigurationService {
 		authorityAdmin.setAuthority(Authority.ADMIN);
 		Assert.isTrue(admin.getUserAccount().getAuthorities().contains(authorityAdmin));
 
+		final String newBanner = this.checkURL(c.getBanner());
+		c.setBanner(newBanner);
+
 		final Configuration configuration = this.configurationRepository.save(c);
 
 		Assert.notNull(configuration);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ConfigurationService;
 import services.HiringService;
 import services.ManagerService;
 import services.PlayerService;
@@ -33,30 +34,35 @@ public class FiringPresidentController extends AbstractController {
 	// Services ---------------------------------------------------
 
 	@Autowired
-	PresidentService		presidentService;
+	PresidentService				presidentService;
 
 	@Autowired
-	PlayerService			playerService;
+	PlayerService					playerService;
 
 	@Autowired
-	ManagerService			managerService;
+	ManagerService					managerService;
 
 	@Autowired
-	private TeamService		teamService;
+	private TeamService				teamService;
 
 	@Autowired
-	private SigningService	signingService;
+	private SigningService			signingService;
 
 	@Autowired
-	private HiringService	hiringService;
+	private HiringService			hiringService;
 
 	@Autowired
-	private TrainingService	trainingService;
+	private TrainingService			trainingService;
+
+	@Autowired
+	private ConfigurationService	configurationService;
 
 
 	@RequestMapping(value = "/firePlayer", method = RequestMethod.GET)
 	public ModelAndView firePlayer(@RequestParam final int playerId) {
 		ModelAndView result = null;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
 		final President president = this.presidentService.findByPrincipal();
 
@@ -70,21 +76,27 @@ public class FiringPresidentController extends AbstractController {
 			if (players.contains(player)) {
 				signing = this.signingService.findSigningOfPresidentAndPlayer(president.getId(), player.getId());
 
-				this.signingService.delete(signing);
-				player.setTeam(null);
-				this.playerService.save(player);
+				try {
+					this.signingService.delete(signing);
+					player.setTeam(null);
+					this.playerService.save(player);
 
-				this.teamService.functional(team);
+					this.teamService.functional(team);
 
-				result = new ModelAndView("redirect:/team/president,manager/listByPresident.do");
-			} else
+					result = new ModelAndView("redirect:/team/president,manager/listByPresident.do");
+				} catch (final Exception oops) {
+
+				}
+			} else {
 				// NO AUTORIZADO!
 				result = new ModelAndView("redirect:/welcome/index.do");
-
-		} else
+				result.addObject("banner", banner);
+			}
+		} else {
 			// NO EXISTE EL JUGADOR!
 			result = new ModelAndView("misc/notExist");
-
+			result.addObject("banner", banner);
+		}
 		return result;
 
 	}
@@ -94,6 +106,8 @@ public class FiringPresidentController extends AbstractController {
 		ModelAndView result = null;
 
 		final President president = this.presidentService.findByPrincipal();
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
 		final Team team = this.teamService.findTeamByPresidentId(president.getId());
 
@@ -107,24 +121,32 @@ public class FiringPresidentController extends AbstractController {
 			if (hiring != null) {
 				this.hiringService.delete(hiring);
 
-				final Collection<Training> trainings = this.trainingService.findFutureTrainingsByManagerId(manager.getId());
+				try {
+					final Collection<Training> trainings = this.trainingService.findFutureTrainingsByManagerId(manager.getId());
 
-				for (final Training t : trainings)
-					this.trainingService.delete(t);
+					for (final Training t : trainings)
+						this.trainingService.delete(t);
 
-				manager.setTeam(null);
-				this.managerService.save(manager);
+					manager.setTeam(null);
+					this.managerService.save(manager);
 
-				team.setFunctional(false);
-				this.teamService.save(team);
+					team.setFunctional(false);
+					this.teamService.save(team);
 
-				result = new ModelAndView("redirect:/team/president,manager/listByPresident.do");
-			} else
+					result = new ModelAndView("redirect:/team/president,manager/listByPresident.do");
+				} catch (final Exception oops) {
+
+				}
+			} else {
 				// NO AUTORIZADO!
 				result = new ModelAndView("redirect:/welcome/index.do");
-		} else
+				result.addObject("banner", banner);
+			}
+		} else {
 			// NO EXISTE EL MANAGER!
 			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
 
 		return result;
 

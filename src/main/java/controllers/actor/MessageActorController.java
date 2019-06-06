@@ -190,29 +190,32 @@ public class MessageActorController extends AbstractController {
 				security2 = message1.getRecipient().equals(actor) || message1.getSender().equals(actor);
 				final Box box = this.boxService.findOne(boxId);
 
-				if (security2 && message1.getBoxes().contains(box)) {
+				if (security2 && message1.getBoxes().contains(box))
+					try {
+						this.messageService.delete(message1);
 
-					this.messageService.delete(message1);
-
-					result = new ModelAndView("redirect:/box/actor/list.do");
-					result.addObject("banner", banner);
-				} else {
+						result = new ModelAndView("redirect:/box/actor/list.do");
+						result.addObject("banner", banner);
+					} catch (final Exception oops) {
+						result = new ModelAndView("redirect:/welcome/index.do");
+						result.addObject("banner", banner);
+					}
+				else {
 
 					result = new ModelAndView("redirect:/welcome/index.do");
 					result.addObject("banner", banner);
 				}
 
-			} else
+			} else {
 				result = new ModelAndView("redirect:/welcome/index.do");
-			result.addObject("banner", banner);
-
+				result.addObject("banner", banner);
+			}
 		} else
 			result = new ModelAndView("misc/notExist");
 		result.addObject("banner", banner);
 
 		return result;
 	}
-
 	protected ModelAndView createEditModelAndView(final MessageForm message2) {
 		final ModelAndView result;
 		result = this.createEditModelAndView(message2, null);

@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -210,6 +211,19 @@ public class HiringService {
 	public Collection<Hiring> findAllByManager(final int id) {
 
 		final Collection<Hiring> res = this.hiringRepository.findAllByManager(id);
+
+		return res;
+	}
+
+	public Collection<Hiring> findByPresidentDown(final int presidentId) {
+		final Team team = this.teamService.findByPresidentId(presidentId);
+		Collection<Hiring> res = new HashSet<Hiring>();
+
+		if (team != null) {
+			final Manager manager = this.teamService.findManagerByTeamId((team.getId()));
+			if (manager != null)
+				res = this.hiringRepository.findByManagerIdPresident(manager.getId());
+		}
 
 		return res;
 	}
