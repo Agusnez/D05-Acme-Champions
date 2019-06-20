@@ -46,7 +46,7 @@ public class HistoryServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to display her/his history.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to display her/his history.
 	 * 
 	 * b) Negative cases:
 	 * 2. Not history
@@ -107,7 +107,7 @@ public class HistoryServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to create her/his history.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to create her/his history.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid authority
@@ -183,7 +183,7 @@ public class HistoryServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to delete her/his history.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to delete her/his history.
 	 * 
 	 * b) Negative cases:
 	 * 2. Not history

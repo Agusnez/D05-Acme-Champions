@@ -39,7 +39,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as a player must be able to create her/his personal data.
+	 * a)Requirement 29.3: An actor who is authenticated as a player must be able to create her/his personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. Photo not url
@@ -106,7 +106,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as a player must be able to edit her/his personal data.
+	 * a)Requirement 29.3: An actor who is authenticated as a player must be able to edit her/his personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. SocialNetworkProfilelink = not url

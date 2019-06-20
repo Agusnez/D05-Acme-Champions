@@ -50,7 +50,7 @@ public class ReportServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 32.1: An actor who is authenticated as a manager must be able to create a report about a player.
+	 * a)Requirement 28.6: An actor who is authenticated as a manager must be able to create a report about a player.
 	 * 
 	 * b) Negative cases:
 	 * 2. Description = blank
@@ -114,7 +114,7 @@ public class ReportServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 32.1: An actor who is authenticated as a manager must be able to delete a report about a player.
+	 * a)Requirement 28.6: An actor who is authenticated as a manager must be able to delete a report about a player.
 	 * 
 	 * b) Negative cases:
 	 * 2. Not report
@@ -177,7 +177,7 @@ public class ReportServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 32.1: An actor who is authenticated as a manager must be able to list the reports about a player.
+	 * a)Requirement 28.6: An actor who is authenticated as a manager must be able to list the reports about a player.
 	 * 
 	 * b) Negative cases:
 	 * 2. Not report

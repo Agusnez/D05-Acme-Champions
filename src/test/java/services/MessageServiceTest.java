@@ -46,7 +46,7 @@ public class MessageServiceTest extends AbstractTest {
 
 	/*
 	 * ACME-CHAMPIONS
-	 * a)(Level B)Requirement 30.1 : Actors can exchange messages
+	 * a)Requirement 26.3 : Actors can exchange messages
 	 * 
 	 * b)Negative cases:
 	 * 2. Body blank

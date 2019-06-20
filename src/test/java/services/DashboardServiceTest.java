@@ -34,9 +34,7 @@ public class DashboardServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 14.3: An actor who is authenticated as administrator must be able to display a dashboard.
-	 * (Level B) Requirement 33.1: An actor who is authenticated as administrator must be able to display a dashboard.
-	 * (Level A) Requirement 45.2: An actor who is authenticated as administrator must be able to display a dashboard.
+	 * a) req 30.3: Actors that are authenticated as administrators must be able to: Have a dashboard
 	 * 
 	 * b) Negative cases:
 	 * 2. Incorrect minOfTrainingsPerManager

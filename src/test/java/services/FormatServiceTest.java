@@ -33,7 +33,7 @@ public class FormatServiceTest extends AbstractTest {
 
 
 	/*
-	 * a)Req44.3: Actors that are authenticated as a federation must be able to:
+	 * a)Req33.3: Actors that are authenticated as a federation must be able to:
 	 * Manage their formats: Create
 	 * b) Negative cases:
 	 * 2. The min of the property minimumTeams must be 2
@@ -96,7 +96,7 @@ public class FormatServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * a)Req44.3: Actors that are authenticated as a federation must be able to:
+	 * a)Req33.3: Actors that are authenticated as a federation must be able to:
 	 * Manage their formats: Edit
 	 * b) Negative cases:
 	 * 2. The type of format is TOURNAMENT or LEAGUE
@@ -153,7 +153,7 @@ public class FormatServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * a)Req44.3: Actors that are authenticated as a federation must be able to:
+	 * a)Req33.3: Actors that are authenticated as a federation must be able to:
 	 * Manage their formats: List
 	 * b) Negative cases:
 	 * 2. The number of format finded is wrong
@@ -202,7 +202,7 @@ public class FormatServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * a)Req44.3: Actors that are authenticated as a federation must be able to:
+	 * a)Req33.3: Actors that are authenticated as a federation must be able to:
 	 * Manage their formats: Delete
 	 * b) Negative cases:
 	 * 2. The actor is not the owner
@@ -253,7 +253,7 @@ public class FormatServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * a)Req44.3: Actors that are authenticated as a federation must be able to:
+	 * a)Req33.3: Actors that are authenticated as a federation must be able to:
 	 * Manage their formats: Display
 	 * b) Negative cases:
 	 * 2. Not format

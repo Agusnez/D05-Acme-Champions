@@ -43,7 +43,7 @@ public class SportRecordServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to create her/his sport record.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to create her/his sport record.
 	 * 
 	 * b) Negative cases:
 	 * 2. SportName = null
@@ -109,7 +109,7 @@ public class SportRecordServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to edit her/his sport record.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to edit her/his sport record.
 	 * 
 	 * b) Negative cases:
 	 * 2. Start date = null
@@ -177,7 +177,7 @@ public class SportRecordServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to delete her/his sport record.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to delete her/his sport record.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid authority

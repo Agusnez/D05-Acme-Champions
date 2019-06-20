@@ -40,7 +40,7 @@ public class SponsorshipServiceTest extends AbstractTest {
 
 	/*
 	 * ACME-CHAMPIONS
-	 * a)(Level A) Requirement 43.1: Actors that are authenticated as a sponsor must be able to: Create sponsorship
+	 * a)Requirement 32.1: Actors that are authenticated as a sponsor must be able to: Create sponsorship
 	 * 
 	 * b) Negative cases:
 	 * 2. Wrong authority
@@ -107,7 +107,7 @@ public class SponsorshipServiceTest extends AbstractTest {
 
 	/*
 	 * ACME-CHAMPIONS
-	 * a)(Level A) Requirement 43.1: Actors that are authenticated as a sponsor must be able to: List his/her sponsorships
+	 * a)Requirement 32.1: Actors that are authenticated as a sponsor must be able to: List his/her sponsorships
 	 * 
 	 * b) Negative cases:
 	 * 2. Incorrect results
@@ -164,7 +164,7 @@ public class SponsorshipServiceTest extends AbstractTest {
 
 	/*
 	 * ACME-CHAMPIONS
-	 * a)(Level A) Requirement 43.1: Actors that are authenticated as a sponsor must be able to: Display his/her sponsorships
+	 * a)Requirement 32.1: Actors that are authenticated as a sponsor must be able to: Display his/her sponsorships
 	 * 
 	 * b) Negative cases:
 	 * 2.Not training

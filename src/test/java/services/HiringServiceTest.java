@@ -35,7 +35,7 @@ public class HiringServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 12.5: An actor who is authenticated as a president must be able to: Hire a manager
+	 * a)Requirement 27.2: An actor who is authenticated as a president must be able to: Hire a manager
 	 * 
 	 * b) Negative cases:
 	 * 2. Wrong authority
@@ -100,7 +100,7 @@ public class HiringServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 12.5: An actor who is authenticated as a president must be able to: Hire a manager
+	 * a)Requirement 27.2: An actor who is authenticated as a president must be able to: Hire a manager
 	 * 
 	 * b) Negative cases:
 	 * 2. Wrong authority
@@ -165,7 +165,7 @@ public class HiringServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 12.5: An actor who is authenticated as a president must be able to: Hire a manager
+	 * a)Requirement 27.2: An actor who is authenticated as a president must be able to: Hire a manager
 	 * 
 	 * b) Negative cases:
 	 * 2. Wrong authority

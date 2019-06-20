@@ -36,7 +36,7 @@ public class SponsorServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 42.1: An actor who is not authenticated must be able to register to the system as a sponsor.
+	 * a)Requirement 25.4: An actor who is not authenticated must be able to register to the system as a sponsor.
 	 * 
 	 * b) Negative cases:
 	 * 2. Photo = not url
@@ -116,7 +116,7 @@ public class SponsorServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 10.2: An actor who is authenticated must be able to edit their personal data.
+	 * a)Requirement 26.2: An actor who is authenticated must be able to edit their personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. Email = blank
@@ -202,7 +202,7 @@ public class SponsorServiceTest extends AbstractTest {
 
 	/*
 	 * ACME-CHAMPIONS
-	 * a)(Level A) Requirement 43.2: Actors that are authenticated as a sponsor must be able to: Edit his/her credit card
+	 * a)Requirement 32.2: Actors that are authenticated as a sponsor must be able to: Edit his/her credit card
 	 * 
 	 * b) Negative cases:
 	 * 2.Not training

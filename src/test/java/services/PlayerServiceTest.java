@@ -50,7 +50,7 @@ public class PlayerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 9.1: An actor who is not authenticated must be able to register to the system as a player.
+	 * a)Requirement 25.1: An actor who is not authenticated must be able to register to the system as a player.
 	 * 
 	 * b) Negative cases:
 	 * 2. SquadName = blank
@@ -128,7 +128,7 @@ public class PlayerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 10.2: An actor who is authenticated must be able to edit their personal data.
+	 * a)Requirement 26.2: An actor who is authenticated must be able to edit their personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. SquadNumber < 1
@@ -205,7 +205,7 @@ public class PlayerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 11.4: An actor who is authenticated as president must be able to: List all the players that are joined to the team.
+	 * a)Requirement 27.3: An actor who is authenticated as president must be able to: List all the players that are joined to the team.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid player
@@ -278,7 +278,7 @@ public class PlayerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 11.4: An actor who is authenticated as president must be able to fire a player.
+	 * a)Requirement 27.4: An actor who is authenticated as president must be able to fire a player.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid authority
@@ -342,7 +342,7 @@ public class PlayerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.4: An actor who is authenticated as manager must be able to list his/her players.
+	 * a)Requirement 28.4: An actor who is authenticated as manager must be able to list his/her players.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid player

@@ -49,7 +49,7 @@ public class CompetitionServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 44.1: An actor who is authenticated as a federation must be able to: Create competitions
+	 * a)(Level A) Requirement 33.1: An actor who is authenticated as a federation must be able to: Create competitions
 	 * 
 	 * b) Negative cases:
 	 * 2. Wrong authority
@@ -114,7 +114,7 @@ public class CompetitionServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 44.2: An actor who is authenticated as a federation must be able to: List competitions
+	 * a)(Level A) Requirement 33.1: An actor who is authenticated as a federation must be able to: List competitions
 	 * 
 	 * b) Negative cases:
 	 * 2. Wrong authority
@@ -179,7 +179,7 @@ public class CompetitionServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 44.1: An actor who is authenticated as a federation must be able to: Create competitions
+	 * a)(Level A) Requirement 33.1: An actor who is authenticated as a federation must be able to: Create competitions
 	 * 
 	 * b) Negative cases:
 	 * 2. blank field
@@ -257,16 +257,6 @@ public class CompetitionServiceTest extends AbstractTest {
 
 	}
 
-	/*
-	 * -------Coverage CompetitionService-------
-	 * 
-	 * ----TOTAL SENTENCE COVERAGE:
-	 * CompetitionService = 10,7%
-	 * 
-	 * ----TOTAL DATA COVERAGE:
-	 * Competition = 25%
-	 */
-
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
 
@@ -286,9 +276,10 @@ public class CompetitionServiceTest extends AbstractTest {
 	 * -------Coverage CompetitionService-------
 	 * 
 	 * ----TOTAL SENTENCE COVERAGE:
-	 * CompetitionService = 12%
+	 * CompetitionService = 10,7%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Competition = 0%
+	 * Competition = 25%
 	 */
+
 }

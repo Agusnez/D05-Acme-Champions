@@ -43,7 +43,7 @@ public class PlayerRecordServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to create her/his player record.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to create her/his player record.
 	 * 
 	 * b) Negative cases:
 	 * 2. Salary = null
@@ -111,7 +111,7 @@ public class PlayerRecordServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to edit her/his player record.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to edit her/his player record.
 	 * 
 	 * b) Negative cases:
 	 * 2. SquadNumber < 0
@@ -196,7 +196,7 @@ public class PlayerRecordServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 13.3: An actor who is authenticated as player must be able to delete her/his player record.
+	 * a)Requirement 29.3: An actor who is authenticated as player must be able to delete her/his player record.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid authority

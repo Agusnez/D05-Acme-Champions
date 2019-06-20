@@ -46,7 +46,7 @@ public class TrainingServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Create training
+	 * a)Requirement 28.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Create training
 	 * 
 	 * b) Negative cases:
 	 * 2. Player is trying to create a training
@@ -109,7 +109,7 @@ public class TrainingServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Display training
+	 * a)Requirement 28.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Display training
 	 * 
 	 * b) Negative cases:
 	 * 2. Not training
@@ -169,7 +169,7 @@ public class TrainingServiceTest extends AbstractTest {
 	}
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.1: An actor who is authenticated as a manager must be able to: Manage their trainings: List trainings
+	 * a)Requirement 28.1: An actor who is authenticated as a manager must be able to: Manage their trainings: List trainings
 	 * 
 	 * b) Negative cases:
 	 * 2.The number of trainings is incorrect
@@ -222,7 +222,7 @@ public class TrainingServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Delete trainings
+	 * a)Requirement 28.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Delete trainings
 	 * 
 	 * b) Negative cases:
 	 * 2. Not training
@@ -278,7 +278,7 @@ public class TrainingServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Edit trainings
+	 * a)Requirement 28.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Edit trainings
 	 * 
 	 * b) Negative cases:
 	 * 2. The start date is past
@@ -365,7 +365,7 @@ public class TrainingServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.2: An actor who is authenticated as a manager must be able to: Manage their trainings: Train the team in which they are. That is, assign each player to a
+	 * a)Requirement 28.1: An actor who is authenticated as a manager must be able to: Manage their trainings: Train the team in which they are. That is, assign each player to a
 	 * training.
 	 * 
 	 * b) Negative cases:
@@ -439,7 +439,7 @@ public class TrainingServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.1: An actor who is authenticated as a player must be able to: List all the trainings that the manager has assign them.
+	 * a)Requirement 29.1: An actor who is authenticated as a player must be able to: List all the trainings that the manager has assign them.
 	 * 
 	 * b) Negative cases:
 	 * 2.Wrong number of trainings

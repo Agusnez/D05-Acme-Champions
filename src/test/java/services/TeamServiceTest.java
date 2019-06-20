@@ -44,7 +44,7 @@ public class TeamServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 11.1: An actor who is authenticated as a president must be able to: Create a team.
+	 * a)Requirement 27.1: An actor who is authenticated as a president must be able to: Create a team.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name is blank
@@ -113,7 +113,7 @@ public class TeamServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 11.1: An actor who is authenticated as a president must be able to: Create a team.
+	 * a)Requirement 27.1: An actor who is authenticated as a president must be able to: Create a team.
 	 * 
 	 * b) Negative cases:
 	 * 2. StadiumName is blank
@@ -185,7 +185,7 @@ public class TeamServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 11.1: An actor who is authenticated as president must be able to display his/her team.
+	 * a)Requirement 27.1: An actor who is authenticated as president must be able to display his/her team.
 	 * 
 	 * b) Negative cases:
 	 * 2. The team does not belongs to the president

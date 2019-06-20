@@ -119,7 +119,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 32.2: An actor who is authenticated as a manager must be able to see a prediction of the next matches.
+	 * a)(Level B) Requirement 28.7: An actor who is authenticated as a manager must be able to see a prediction of the next matches.
 	 * 
 	 * b) Negative cases:
 	 * 2. Not team

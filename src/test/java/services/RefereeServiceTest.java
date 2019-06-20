@@ -35,7 +35,7 @@ public class RefereeServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 29.1: An actor who is not authenticated must be able to register to the system as a referee.
+	 * a)Requirement 25.2: An actor who is not authenticated must be able to register to the system as a referee.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name = blank
@@ -106,7 +106,7 @@ public class RefereeServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 10.2: An actor who is authenticated must be able to edit their personal data.
+	 * a)Requirement 26.2: An actor who is authenticated must be able to edit their personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name = blank

@@ -35,7 +35,7 @@ public class AdministratorServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 14.1: An actor who is authenticated must be able to create user accounts for new administrators.
+	 * a)(Level C) Requirement 30.1: An actor who is authenticated must be able to create user accounts for new administrators.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name = blank
@@ -108,7 +108,7 @@ public class AdministratorServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 10.2: An actor who is authenticated must be able to edit their personal data.
+	 * a)(Level C) Requirement 26.2: An actor who is authenticated must be able to edit their personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. Surname = blank

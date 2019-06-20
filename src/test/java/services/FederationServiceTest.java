@@ -39,7 +39,7 @@ public class FederationServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level A) Requirement 42.1: An actor who is not authenticated must be able to register to the system as a federation.
+	 * a)Requirement 25.4: An actor who is not authenticated must be able to register to the system as a federation.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name = blank
@@ -112,7 +112,7 @@ public class FederationServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 10.2: An actor who is authenticated must be able to edit their personal data.
+	 * a)Requirement 26.2: An actor who is authenticated must be able to edit their personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. EstablishmentDate = null

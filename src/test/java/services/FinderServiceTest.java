@@ -38,7 +38,7 @@ public class FinderServiceTest extends AbstractTest {
 	 */
 
 	/*
-	 * a)Req11.1: Actors that are authenticated as a president must be able to:
+	 * a)Req27.2: Actors that are authenticated as a president must be able to:
 	 * Browse managers and players via finder, hire managers and sign players to join the team.
 	 * b) Negative cases:
 	 * 2. The number of the players finded is wrong

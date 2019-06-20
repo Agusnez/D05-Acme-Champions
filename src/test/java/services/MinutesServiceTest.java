@@ -28,7 +28,7 @@ public class MinutesServiceTest extends AbstractTest {
 
 
 	/*
-	 * a)Req31.1: Actors that are authenticated as a referee must be able to:
+	 * a)Req31.2: Actors that are authenticated as a referee must be able to:
 	 * Write minute to a match only after the match date has passed.
 	 * b) Negative cases:
 	 * 2. the referee is not the owner

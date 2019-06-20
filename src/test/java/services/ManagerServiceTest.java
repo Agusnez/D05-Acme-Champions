@@ -39,7 +39,7 @@ public class ManagerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 9.1: An actor who is not authenticated must be able to register to the system as a manager.
+	 * a)Requirement 25.1: An actor who is not authenticated must be able to register to the system as a manager.
 	 * 
 	 * b) Negative cases:
 	 * 2. Name = blank
@@ -108,7 +108,7 @@ public class ManagerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 10.2: An actor who is authenticated must be able to edit their personal data.
+	 * a)Requirement 26.2: An actor who is authenticated must be able to edit their personal data.
 	 * 
 	 * b) Negative cases:
 	 * 2. Email = blank
@@ -182,7 +182,7 @@ public class ManagerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 11.4: An actor who is authenticated as president must be able to fire a manager.
+	 * a)Requirement 27.4: An actor who is authenticated as president must be able to fire a manager.
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid authority
@@ -246,7 +246,7 @@ public class ManagerServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 32.2: An actor who is authenticated as manager must be able to see a prediction of the next matches.
+	 * a)Requirement 28.7: An actor who is authenticated as manager must be able to see a prediction of the next matches.
 	 * 
 	 * b) Negative cases:
 	 * 2. Incorrect results

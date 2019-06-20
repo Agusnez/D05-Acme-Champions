@@ -47,7 +47,7 @@ public class GameServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 29.2: An actor who is not authenticated must be able to: View next matches as well as the already finished ones.
+	 * a)Requirement 25.4: An actor who is not authenticated must be able to: View next matches as well as the already finished ones.
 	 * 
 	 * b) Negative cases:
 	 * 2. The number of games is incorrect
@@ -100,7 +100,7 @@ public class GameServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Create match
+	 * a)Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Create match
 	 * 
 	 * b) Negative cases:
 	 * 2. Player is trying to create a game
@@ -166,7 +166,7 @@ public class GameServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Edit match
+	 * a)Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Edit match
 	 * 
 	 * b) Negative cases:
 	 * 2. Player is trying to edit a game
@@ -226,7 +226,7 @@ public class GameServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Delete match
+	 * a)Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Delete match
 	 * 
 	 * b) Negative cases:
 	 * 2. Player is trying to delete a game
@@ -282,7 +282,7 @@ public class GameServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: List matches
+	 * a)Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: List matches
 	 * 
 	 * b) Negative cases:
 	 * 2.The number of games is incorrect
@@ -336,7 +336,7 @@ public class GameServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level B) Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Display match
+	 * a)Requirement 31.1: Actors that are authenticated as a referee must be able to: Manage their matches: Display match
 	 * 
 	 * b) Negative cases:
 	 * 2. Not match

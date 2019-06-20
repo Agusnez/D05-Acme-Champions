@@ -45,7 +45,7 @@ public class StatisticalDataServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.CHAMPIONS
-	 * a)(Level C) Requirement 12.4: An actor who is authenticated as manager must be able to display all player´s data
+	 * a)Requirement 29.4: An actor who is authenticated as manager must be able to display all player´s data
 	 * 
 	 * b) Negative cases:
 	 * 2.Wrong number of matches
